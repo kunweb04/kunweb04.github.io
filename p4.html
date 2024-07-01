@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系我</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+            background-color: #000000;
+        }
+        .container {
+            padding: 1.5cm;
+            position: relative;
+            height: 100vh; 
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+        }
+        .t5 {
+            background-image: url('t5.jpg'); 
+            position: relative; 
+        }
+        .t6 {
+            background-image: url('t6.jpg'); 
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: flex-end;
+            position: relative;
+            z-index: 1;
+        }
+        li {
+            margin: 0 15px;
+        }
+        a {
+            text-decoration: none;
+            color: #000000;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        a:hover {
+            color: #83b6ec;
+        }
+        .centered-text, .date-text, .extra-text {
+            position: absolute;
+            color: #000000; 
+            text-align: center; 
+        }
+        .centered-text {
+            left: 12%; 
+            top: calc(10% + 0.2cm); 
+            transform: translateX(-50%); 
+            font-size: 60px; 
+            font-weight: bold;
+        }
+        .date-text {
+            left: 21%;
+            top: calc(20% + 1.4cm); 
+            transform: translateX(-50%);
+            font-size: 45px; 
+            font-weight: bold; 
+        }
+        .module {
+            position: absolute;
+            font-size: 60px;
+            font-weight: bold;
+            color: #000000;
+            text-align: center;
+        }
+        .module1 {
+            left: 17%; 
+            top: calc(10% + 0.2cm); 
+            transform: translateX(-50%); 
+        }
+        .module2 {
+            left: 20%; 
+            top: calc(10% + 0.2cm); 
+            transform: translateX(-50%); 
+        }
+        .module3 {
+            left: 32%; 
+            top: calc(10% + 0.2cm); 
+            transform: translateX(-50%); 
+        }
+        .social-links {
+            position: absolute;
+            bottom: 2cm;
+            top: calc(50% + 0.2cm); 
+            left: 6cm;
+            text-align: left;
+            color: #000000;
+        }
+        .social-links a {
+            display: block;
+            color: #000000;
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+        .social-links a img {
+            vertical-align: middle;
+            margin-right: 10px;
+            width: 25px;
+            height: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container t5"> 
+        <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="p2.html">关于我</a></li>
+            <li><a href="p3.html">作品集</a></li>
+            <li><a href="p4.html">联系我</a></li>
+        </ul>
+        <div class="centered-text">
+            联系我
+        </div>
+        <div class="date-text">
+            我有哪些社交媒体？
+        </div>
+        <div class="social-links">
+            <a href="https://www.instagram.com/kunzhe0417?igsh=MWQzODBvNXljajVqdw==" target="_blank">
+                <img src="ig3.png" alt="Instagram">Instagram
+            </a>
+            <a href="https://discord.com/invite/TAtjJKjf" target="_blank">
+                <img src="dc2.png" alt="Discord">Discord
+            </a>
+            <a href="https://github.com/oho1714" target="_blank">
+                <img src="gt.png" alt="GitHub">GitHub
+            </a>
+        </div>
+    </div>
+    <div class="container t6"> 
+    </div>
+</body>
+</html>

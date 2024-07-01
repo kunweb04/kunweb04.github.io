@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作品集</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+        }
+        .container {
+            padding: 1.5cm;
+            position: relative;
+            height: 100vh; 
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+        }
+        .t2 {
+            background-image: url('t4.jpg'); 
+        }
+        .t3 {
+            background-image: url('t3.jpg'); 
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: flex-end;
+            position: absolute;
+            top: 1.5cm;
+            right: 1.5cm;
+            z-index: 1;
+        }
+        li {
+            margin: 0 15px;
+        }
+        a {
+            text-decoration: none;
+            color: #000000;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        a:hover {
+            color: #83b6ec;
+        }
+        .centered-text, .date-text, .extra-text {
+            position: absolute;
+            color: #000000; 
+            text-align: center; 
+        }
+        .centered-text {
+            left: 12%; 
+            top: calc(10% + 0.2cm); 
+            transform: translateX(-50%); 
+            font-size: 60px; 
+            font-weight: bold;
+        }
+        .date-text {
+            left: 14%;
+            top: calc(15% + 1.4cm); 
+            transform: translateX(-50%);
+            font-size: 35px; 
+            font-weight: bold; 
+        }
+        .bottom-left-text {
+            position: absolute;
+            top: calc(35% + 0.2cm); 
+            left: 3.4cm;
+            color: #000000;
+            font-size: 22px; 
+            text-align: left;
+            font-weight: bold;
+        }
+        .case-study {
+            position: absolute;
+            top: 1cm; 
+            left: 1.5cm; 
+            width: 55%; 
+            color: #000000;
+            text-align: left;
+            font-weight: bold;
+        }
+        .case-study-title {
+            font-size: 35px; 
+        }
+        .case-study-content {
+            font-size: 28px; 
+            margin-top: 0; 
+            margin-left: 0; 
+        }
+        .case-study-content p {
+            margin: 0; 
+        }
+        .personal-info {
+            position: absolute;
+            top: 30%; 
+            left: 3.4cm;
+            color: hsl(197, 100%, 70%);
+            font-size: 22px; 
+            text-align: left;
+            font-weight: bold;
+        }
+        .portfolio-button {
+            position: absolute;
+            top: calc(12% + 0.49cm);
+            left: 5cm;
+            padding: 6px 14px;
+            border: 2px solid #373838;
+            border-radius: 1px;
+        }
+        .portfolio-button a {
+            color: hsl(197, 100%, 70%);
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .portfolio-button a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container t2"> 
+        <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="p2.html">关于我</a></li>
+            <li><a href="p3.html">作品集</a></li>
+            <li><a href="p4.html">联系我</a></li>
+        </ul>
+        <div class="centered-text">
+            作品集
+        </div>
+        <div class="date-text">
+            项目展示：
+        </div>
+        <div class="extra-text">
+            
+        </div>
+        <div class="bottom-left-text">
+            <p style="font-size: 33px">个人网站(本网站)</p>
+            <p>这是我在学习HTML、CSS和JavaScript过程中创建的个人网站，展示了我的学习成果和技能提升过程。</p>
+        </div>
+        <div class="bottom-left-text" style="top: calc(50% + 2cm);"> 
+            <p style="font-size: 33px">摄影作品集</p>
+            <p>我的摄影作品展示平台，可以浏览我的摄影作品。</p>
+            <div class="portfolio-button">
+                <a href="x1.html">进入摄影作品集</a>
+            </div>
+        </div>
+    </div>
+    <div class="container t3"> 
+        <div class="case-study">
+            <p class="case-study-title" style="font-size: 39px;">案例研究</p>
+            <p class="case-study-content" style="font-size: 33px;">项目名称</p>
+            <p class="case-study-content" style="font-size: 28px; margin-top: -10px;">个人网站(本站)</p>
+        </div>
+        <div class="case-study" style="top: 8cm; left: 22cm; width: 40%;">
+            <p class="case-study-content" style="font-size: 33px; margin-left: 13.8cm;">背景</p>
+            <p class="case-study-content" style="font-size: 28px; margin-top: -10px;">作为学习HTML、CSS和JavaScript的实践项目，旨在展示我的技能和学习成果。</p>
+        </div>
+        <div class="case-study" style="top: 13cm; width: 40%;">
+            <p class="case-study-content" style="font-size: 33px;">挑战</p>
+            <p class="case-study-content" style="font-size: 28px; margin-top: -10px;">在没有太多经验的情况下，从零开始设计和开发一个完整的网站</p>
+        </div>
+        <div class="case-study" style="top: 16cm; left: 22cm; width: 40%;">
+            <p class="case-study-content" style="font-size: 33px; margin-top: 20px; margin-left: 12cm;">解决方案</p>
+            <p class="case-study-content" style="font-size: 28px; margin-top: -10px;">通过好友指导及Youtube等平台学习，逐步实现网站的各项功能。</p>
+        </div>
+    </div>
+</body>
+</html>

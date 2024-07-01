@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>摄影作品集</title>
+    <style>
+        body {
+            margin: 0;
+            background-image: url('xx1.jpg'); 
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            min-height: 100vh; 
+            font-family: Arial, sans-serif;
+            color: #ffffff; 
+        }
+        .container {
+            padding: 1.5cm;
+            position: relative;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: flex-end;
+        }
+        li {
+            margin: 0 15px;
+        }
+        a {
+            text-decoration: none;
+            color: #000000;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        a:hover {
+            color: #83b6ec;
+        }
+        .image-container {
+            position: relative;
+            width: 60%;
+            text-align: center;
+            margin: 0.55cm auto;
+            overflow: hidden; 
+            box-shadow: 0 5px 8px rgba(0, 0, 0, 0.3); 
+        }
+        .image-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+            background-color: transparent;
+        }
+        .text-overlay {
+            position: absolute;
+            left: 50%;
+            bottom: 20%;
+            transform: translateX(-50%);
+            font-size: 23px;
+            font-weight: bold;
+            color: #000000;
+            text-align: center;
+            /*text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);*/
+            top: calc(87% + 0.3cm); 
+            z-index: 1; 
+            padding: 10px 20px; 
+            border-radius: 8px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container"> 
+        <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="p2.html">关于我</a></li>
+            <li><a href="p3.html">作品集</a></li>
+            <li><a href="p4.html">联系我</a></li>
+        </ul>
+        <div class="image-container">
+            <img src="x6.jpg" alt="图片">
+        </div>
+        <div class="text-overlay">
+            2024年书画学会校庆书画展周边商品图
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人简介</title>
+    <style>
+        body {
+            margin: 0;
+            background-image: url('t1.jpeg'); 
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            min-height: 100vh; 
+            font-family: Arial, sans-serif;
+            color: #ffffff; 
+        }
+        .container {
+            padding: 1.5cm;
+            position: relative;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: flex-end;
+        }
+        li {
+            margin: 0 15px;
+        }
+        a {
+            text-decoration: none;
+            color: #000000;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        a:hover {
+            color: #83b6ec;
+        }
+        .centered-text {
+            position: absolute;
+            left: 14%; 
+            top: calc(50% + 4.6cm); 
+            transform: translateX(-50%); 
+            font-size: 60px; 
+            font-weight: bold;
+            color: #000000; 
+            text-align: center; 
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .date-text {
+            position: absolute;
+            left: 12.6%;
+            top: calc(50% + 6.1cm); 
+            transform: translateX(-50%);
+            font-size: 24px; 
+            font-weight: bold; 
+            text-align: center;
+            color: #000000; 
+            font-family: 'Times New Roman', Times, serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"> 
+        <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="p2.html">关于我</a></li>
+            <li><a href="p3.html">作品集</a></li>
+            <li><a href="p4.html">联系我</a></li>
+        </ul>
+        <div class="centered-text">
+            KunZhe
+        </div>
+        <div class="date-text">
+            2006年4月17日
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+        }
+        .container {
+            padding: 1.5cm;
+            position: relative;
+            height: 100vh; 
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+        }
+        .t2 {
+            background-image: url('t2.jpg'); 
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: flex-end;
+            position: relative;
+            z-index: 1;
+        }
+        li {
+            margin: 0 15px;
+        }
+        a {
+            text-decoration: none;
+            color: #000000;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        a:hover {
+            color: #83b6ec;
+        }
+        .centered-text, .date-text, .extra-text {
+            position: absolute;
+            color: #000000; 
+            text-align: center; 
+        }
+        .centered-text {
+            left: 12%; 
+            top: calc(10% + 0.2cm); 
+            transform: translateX(-50%); 
+            font-size: 60px; 
+            font-weight: bold;
+        }
+        .date-text {
+            left: 18%;
+            top: calc(20% + 1.4cm); 
+            transform: translateX(-50%);
+            font-size: 45px; 
+            font-weight: bold; 
+        }
+        .extra-text {
+            position: absolute;
+            width: 25%;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.8); 
+            color: #000; 
+            font-weight: bold; 
+            text-align: left;
+            border: 2px solid rgba(255, 255, 255, 0.6); 
+            border-radius: 10px; 
+        }
+        .extra-text p {
+            margin: 10px 0;
+        }
+        .extra-text p:first-child {
+            margin-top: 0;
+        }
+        .extra-text p:last-child {
+            margin-bottom: 0;
+        }
+        .extra-text.left {
+            left: 5%;
+            bottom: 10%;
+            font-size: 22px;
+        }
+        .extra-text.center {
+            left: 36%;
+            bottom: 40%; 
+            font-size: 22px;
+        }
+        .extra-text.right {
+            right: 5%;
+            bottom: 10%;
+            font-size: 22px;
+        }
+        .extra-text.left p:first-child, .extra-text.center p:first-child, .extra-text.right p:first-child {
+            font-size: 28px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container t2"> 
+        <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="p2.html">关于我</a></li>
+            <li><a href="p3.html">作品集</a></li>
+            <li><a href="p4.html">联系我</a></li>
+        </ul>
+        <div class="centered-text">
+            关于我
+        </div>
+        <div class="date-text">
+            欢迎来到我的世界
+        </div>
+        <div class="extra-text left">
+            <p>个人简介</p>
+            <p>- 随性</p>
+            <p>- 客观主义者</p>
+            <p>- 专注于做自己喜欢的事</p>
+        </div>
+        <div class="extra-text center">
+            <p>详细介绍</p>
+            <p>- 
+            </p>
+        </div>
+        <div class="extra-text right">
+            <p>兴趣爱好</p>
+            <p>- 网页工程</p>
+            <p>- 摄影</p>
+            <p>- 晶化学</p>
+            <p>- 信息汇整</p>
+        </div>
+    </div>
+</body>
+</html>

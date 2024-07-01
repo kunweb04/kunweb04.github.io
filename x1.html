@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>摄影作品</title>
+    <style>
+        body {
+            margin: 0;
+            background-image: url('xx1.jpg'); 
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            min-height: 100vh; 
+            font-family: Arial, sans-serif;
+            color: #ffffff; 
+        }
+        .container {
+            padding: 1.5cm;
+            position: relative;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: flex-end;
+        }
+        li {
+            margin: 0 15px;
+        }
+        a {
+            text-decoration: none;
+            color: #000000;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        a:hover {
+            color: #83b6ec;
+        }
+        .centered-text {
+            position: absolute;
+            left: 14%; 
+            top: 2.5cm; 
+            transform: translateX(-50%); 
+            font-size: 60px; 
+            font-weight: bold;
+            color: #000000; 
+            text-align: center; 
+        }
+        .image-button {
+            position: absolute;
+            width: 300px; 
+            height: 200px; 
+            background-color: rgba(0, 0, 0, 0.5); 
+            overflow: hidden; 
+            box-shadow: 0 5px 8px rgba(0, 0, 0, 0.3); 
+            border: 1px solid #747474; 
+        }
+        .image-button img {
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            transition: transform 0.3s ease; 
+        }
+        .image-button:hover img {
+            transform: scale(1.1); 
+        }
+        .left-center {
+            left: 150px; 
+            top: 5.5cm; 
+        }
+        .left-bottom {
+            left: 150px; 
+            top: 12.5cm; 
+        }
+        .center {
+            left: 50%; 
+            top: 5.5cm; 
+            transform: translateX(-50%);
+        }
+        .center-bottom {
+            left: 50%; 
+            top: 12.5cm; 
+            transform: translateX(-50%);
+        }
+        .right-center {
+            right: 150px; 
+            top: 5.5cm; 
+        }
+        .right-bottom {
+            right: 150px; 
+            top: 12.5cm; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container"> 
+        <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="p2.html">关于我</a></li>
+            <li><a href="p3.html">作品集</a></li>
+            <li><a href="p4.html">联系我</a></li>
+        </ul>
+        <div class="centered-text">
+            摄影作品
+        </div>
+        <div class="left-center image-button">
+            <a href="x2.html"><img src="x2.jpg" alt="图片 2"></a>
+        </div>
+        <div class="left-bottom image-button">
+            <a href="x3.html"><img src="x3.jpg" alt="图片 3"></a>
+        </div>
+        <div class="center image-button">
+            <a href="x4.html"><img src="x4.jpg" alt="图片 4"></a>
+        </div>
+        <div class="center-bottom image-button">
+            <a href="x5.html"><img src="x5.jpg" alt="图片 5"></a>
+        </div>
+        <div class="right-center image-button">
+            <a href="x6.html"><img src="x6.jpg" alt="图片 6"></a>
+        </div>
+        <div class="right-bottom image-button">
+            <a href="x7.html"><img src="x7.jpg" alt="图片 7"></a>
+        </div>
+    </div>
+</body>
+</html>
