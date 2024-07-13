@@ -58,6 +58,7 @@
             transform: translateX(-50%); 
             font-size: 60px; 
             font-weight: bold;
+            text-shadow: 0 5px 8px rgba(0, 0, 0, 0.3);
         }
         .date-text {
             left: 14%;
@@ -68,8 +69,17 @@
         }
         .bottom-left-text {
             position: absolute;
-            top: calc(35% + 0.2cm); 
+            top: calc(20% + 2cm); 
             left: 3.4cm;
+            color: #000000;
+            font-size: 22px; 
+            text-align: left;
+            font-weight: bold;
+        }
+        .abottom-left-text {
+            position: absolute;
+            top: calc(45% + 2cm); 
+            right: 3.4cm; 
             color: #000000;
             font-size: 22px; 
             text-align: left;
@@ -106,8 +116,8 @@
         }
         .portfolio-button {
             position: absolute;
-            top: calc(12% + 0.49cm);
-            left: 5cm;
+            top: calc(50% + 2cm);  /* Adjusted position */
+            left: 7cm; /* Adjusted position */
             padding: 6px 14px;
             border: 2px solid #373838;
             border-radius: 1px;
@@ -143,9 +153,16 @@
             <p style="font-size: 33px">个人网站(本网站)</p>
             <p>这是我在学习HTML、CSS和JavaScript过程中创建的个人网站，展示了我的学习成果和技能提升过程。</p>
         </div>
-        <div class="bottom-left-text" style="top: calc(50% + 2cm);"> 
+        <div class="abottom-left-text">  
+            <p style="font-size: 33px">晶体作品集</p>
+            <p>晶体作品展示平台，可以浏览我的晶体作品。</p>
+            <div class="portfolio-button">
+                <a href="h1.html">进入晶体作品集</a>
+            </div>
+        </div>
+        <div class="bottom-left-text" style="top: calc(45% + 2cm); left: 3.4cm;">
             <p style="font-size: 33px">摄影作品集</p>
-            <p>我的摄影作品展示平台，可以浏览我的摄影作品。</p>
+            <p>摄影作品展示平台，可以浏览我的摄影作品。</p>
             <div class="portfolio-button">
                 <a href="x1.html">进入摄影作品集</a>
             </div>
@@ -153,7 +170,7 @@
     </div>
     <div class="container t3"> 
         <div class="case-study">
-            <p class="case-study-title" style="font-size: 39px;">案例研究</p>
+            <p class="case-study-title" style="font-size: 39px;">案例研究1</p>
             <p class="case-study-content" style="font-size: 33px;">项目名称</p>
             <p class="case-study-content" style="font-size: 28px; margin-top: -10px;">个人网站(本站)</p>
         </div>
