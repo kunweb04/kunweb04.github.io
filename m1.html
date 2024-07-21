@@ -7,43 +7,59 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-image: url('t6.jpg'); /* 背景图片 */
-            background-size: cover; /* 背景图片尺寸调整 */
-            background-repeat: no-repeat; /* 不重复背景图片 */
-            background-position: center center; /* 背景图片居中 */
-            margin: 0; /* 移除默认外边距 */
-            padding: 0; /* 移除默认内边距 */
-            display: flex; /* 使用 flexbox 布局 */
-            justify-content: center; /* 居中对齐内容 */
-            align-items: center; /* 垂直居中 */
-            min-height: 100vh; /* 视口高度 */
+            background-image: url('t6.jpg'); 
+            background-size: cover; 
+            background-repeat: no-repeat; 
+            background-position: center center;
+            margin: 0; 
+            padding: 0; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            flex-direction: column;
+        }
+
+        .c1 {
+            position: relative;
+            top: 6.5cm; 
+            text-align: center;
+        }
+
+        .c1 ul {
+            list-style: none; 
+            padding: 0;
+            margin: 0;
+        }
+
+        .c1 ul li {
+            display: inline; 
         }
 
         .container {
             display: flex;
             justify-content: space-between;
             padding: 20px;
-            /* 去掉背景色 */
-            width: 80%; /* 宽度为80% */
-            max-width: 1000px; /* 最大宽度1000px */
-            margin: 0 auto; /* 居中对齐 */
+            width: 80%; 
+            max-width: 1000px; 
+            margin: 0 auto; 
         }
 
         .left-panel, .right-panel {
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8); /* 半透明背景 */
-            border-radius: 10px; /* 圆角边框 */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 投影效果 */
+            background-color: rgba(255, 255, 255, 0.8); 
+            border-radius: 10px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
         }
 
         .left-panel {
             display: flex;
             flex-direction: column;
-            margin-right: 20px; /* 右侧面板和左侧面板之间的间距 */
+            margin-right: 20px; 
         }
 
         .a-button {
-            margin-bottom: 10px; /* 按钮底部间距 */
+            margin-bottom: 10px; 
         }
 
         .right-panel {
@@ -53,7 +69,7 @@
         }
 
         .right-panel button {
-            margin-bottom: 20px; /* 按钮底部间距 */
+            margin-bottom: 20px; 
         }
 
         button {
@@ -67,18 +83,23 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: rgba(255, 255, 255, 0.8); /* 半透明白色背景 */
-            border: 1.2px solid rgb(174, 174, 255); /* 亮蓝色边框 */
-            border-radius: 5px; /* 圆角边框 */
-            padding: 10px; /* 内边距 */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 投影效果 */
-            text-align: center; /* 文本居中 */
-            font-size: 18px; /* 字体大小 */
-            font-weight: bold; /* 字体加粗 */
+            background-color: rgba(255, 255, 255, 0.8); 
+            border: 1.2px solid rgb(174, 174, 255); 
+            border-radius: 5px; 
+            padding: 10px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+            text-align: center; 
+            font-size: 18px; 
+            font-weight: bold; 
         }
     </style>
 </head>
 <body>
+    <div class="c1"> 
+        <ul>
+            <li><a href="index.html">返回首页</a></li>
+        </ul>
+    </div>
     <div class="container">
         <div class="left-panel">
             <button class="a-button" data-audio="边境.mp3">边境</button>
@@ -145,7 +166,6 @@
                 loopSingle = false;
                 loopAll = true;
                 playAll();
-                updateStatus("列表循环中");
             });
 
             b3Button.addEventListener('click', () => {
@@ -176,7 +196,7 @@
                 const nextAudioFile = currentAButton.getAttribute('data-audio');
                 audioPlayer.src = nextAudioFile;
                 audioPlayer.play();
-                updateStatus(`正在播放 ${currentAButton.textContent}`);
+                updateStatus(`列表循环播放中\n当前播放歌曲: ${currentAButton.textContent}`);
             }
 
             function updateStatus(text) {
