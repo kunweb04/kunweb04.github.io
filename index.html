@@ -49,6 +49,7 @@
             text-align: center; 
             font-family: 'Times New Roman', Times, serif;
             text-shadow: 0 5px 8px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
         }
         .date-text {
             position: absolute;
@@ -72,12 +73,19 @@
             <li><a href="p3.html">作品集</a></li>
             <li><a href="p4.html">联系我</a></li>
         </ul>
-        <div class="centered-text">
+        <div class="centered-text" onclick="playAudio()">
             KunZhe
         </div>
         <div class="date-text">
             2006年4月17日
         </div>
+        <audio id="audio" src="边境.mp3"></audio>
     </div>
+    <script>
+        function playAudio() {
+            var audio = document.getElementById('audio');
+            audio.play();
+        }
+    </script>
 </body>
 </html>
