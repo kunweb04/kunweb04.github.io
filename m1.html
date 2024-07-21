@@ -7,29 +7,53 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-image: url('t6.jpg'); /* 背景图片 */
+            background-size: cover; /* 背景图片尺寸调整 */
+            background-repeat: no-repeat; /* 不重复背景图片 */
+            background-position: center center; /* 背景图片居中 */
+            margin: 0; /* 移除默认外边距 */
+            padding: 0; /* 移除默认内边距 */
+            display: flex; /* 使用 flexbox 布局 */
+            justify-content: center; /* 居中对齐内容 */
+            align-items: center; /* 垂直居中 */
+            min-height: 100vh; /* 视口高度 */
         }
 
         .container {
             display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            /* 去掉背景色 */
+            width: 80%; /* 宽度为80% */
+            max-width: 1000px; /* 最大宽度1000px */
+            margin: 0 auto; /* 居中对齐 */
         }
 
         .left-panel, .right-panel {
             padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* 半透明背景 */
+            border-radius: 10px; /* 圆角边框 */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 投影效果 */
         }
 
         .left-panel {
             display: flex;
             flex-direction: column;
+            margin-right: 20px; /* 右侧面板和左侧面板之间的间距 */
         }
 
         .a-button {
-            margin-bottom: 10px;
+            margin-bottom: 10px; /* 按钮底部间距 */
         }
 
         .right-panel {
             display: flex;
             flex-direction: column;
             justify-content: center;
+        }
+
+        .right-panel button {
+            margin-bottom: 20px; /* 按钮底部间距 */
         }
 
         button {
@@ -39,9 +63,18 @@
         }
 
         .status {
-            margin-top: 20px;
-            font-size: 18px;
-            font-weight: bold;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.8); /* 半透明白色背景 */
+            border: 1.2px solid rgb(174, 174, 255); /* 亮蓝色边框 */
+            border-radius: 5px; /* 圆角边框 */
+            padding: 10px; /* 内边距 */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 投影效果 */
+            text-align: center; /* 文本居中 */
+            font-size: 18px; /* 字体大小 */
+            font-weight: bold; /* 字体加粗 */
         }
     </style>
 </head>
