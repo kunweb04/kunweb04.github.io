@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音乐咖</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .left-panel, .right-panel {
+            padding: 20px;
+        }
+
+        .left-panel {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .a-button {
+            margin-bottom: 10px;
+        }
+
+        .right-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .status {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <button class="a-button" data-audio="边境.mp3">边境</button>
+            <button class="a-button" data-audio="地平线1.mp3">地平线1</button>
+            <button class="a-button" data-audio="加勒比海盗.mp3">加勒比海盗</button>
+            <button class="a-button" data-audio="江山令.mp3">江山令</button>
+            <button class="a-button" data-audio="乐高主题曲.mp3">乐高主题曲</button>
+            <button class="a-button" data-audio="黎鸣.mp3">黎鸣</button>
+            <button class="a-button" data-audio="新贵妃醉酒.mp3">新贵妃醉酒</button>
+            <button class="a-button" data-audio="循迹.mp3">循迹</button>
+            <button class="a-button" data-audio="异客.mp3">异客</button>
+            <button class="a-button" data-audio="异客[改].mp3">异客[改]</button>
+        </div>
+        <div class="right-panel">
+            <button id="b1">循环播放</button>
+            <button id="b2">列表循环</button>
+            <button id="b3">停止音乐</button>
+        </div>
+    </div>
+    <div class="status">
+        <p id="status-text">请选择一个按钮播放音乐</p>
+    </div>
+    <audio id="audio-player"></audio>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const audioPlayer = document.getElementById('audio-player');
+            const statusText = document.getElementById('status-text');
+            let currentAButton = null;
+            let loopSingle = false;
+            let loopAll = false;
+            const aButtons = document.querySelectorAll('.a-button');
+            const b1Button = document.getElementById('b1');
+            const b2Button = document.getElementById('b2');
+            const b3Button = document.getElementById('b3');
+
+            aButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const audioFile = button.getAttribute('data-audio');
+                    audioPlayer.src = audioFile;
+                    audioPlayer.play();
+                    currentAButton = button;
+                    loopSingle = false;
+                    loopAll = false;
+                    updateStatus(`正在播放 ${button.textContent}`);
+                });
+            });
+
+            b1Button.addEventListener('click', () => {
+                if (currentAButton) {
+                    if (loopSingle) {
+                        audioPlayer.loop = false;
+                        loopSingle = false;
+                        updateStatus(`停止循环播放 ${currentAButton.textContent}`);
+                    } else {
+                        audioPlayer.loop = true;
+                        loopSingle = true;
+                        loopAll = false;
+                        updateStatus(`循环播放 ${currentAButton.textContent}`);
+                    }
+                }
+            });
+
+            b2Button.addEventListener('click', () => {
+                loopSingle = false;
+                loopAll = true;
+                playAll();
+                updateStatus("列表循环中");
+            });
+
+            b3Button.addEventListener('click', () => {
+                audioPlayer.pause();
+                audioPlayer.currentTime = 0;
+                loopSingle = false;
+                loopAll = false;
+                updateStatus("音乐已停止");
+            });
+
+            audioPlayer.addEventListener('ended', () => {
+                if (loopSingle) {
+                    audioPlayer.play();
+                } else if (loopAll) {
+                    playNext();
+                }
+            });
+
+            function playAll() {
+                audioPlayer.loop = false;
+                playNext();
+            }
+
+            function playNext() {
+                const currentIndex = Array.from(aButtons).indexOf(currentAButton);
+                const nextIndex = (currentIndex + 1) % aButtons.length;
+                currentAButton = aButtons[nextIndex];
+                const nextAudioFile = currentAButton.getAttribute('data-audio');
+                audioPlayer.src = nextAudioFile;
+                audioPlayer.play();
+                updateStatus(`正在播放 ${currentAButton.textContent}`);
+            }
+
+            function updateStatus(text) {
+                statusText.textContent = text;
+            }
+        });
+    </script>
+</body>
+</html>
