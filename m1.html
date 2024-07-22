@@ -116,6 +116,8 @@
         <div class="right-panel">
             <button id="b1">循环播放</button>
             <button id="b2">列表循环</button>
+            <button id="b4">随机列表播放</button>
+            <button id="b5">暂停/继续播放</button>
             <button id="b3">停止音乐</button>
         </div>
     </div>
@@ -130,10 +132,13 @@
             let currentAButton = null;
             let loopSingle = false;
             let loopAll = false;
+            let loopRandom = false;
             const aButtons = document.querySelectorAll('.a-button');
             const b1Button = document.getElementById('b1');
             const b2Button = document.getElementById('b2');
             const b3Button = document.getElementById('b3');
+            const b4Button = document.getElementById('b4');
+            const b5Button = document.getElementById('b5');
 
             aButtons.forEach(button => {
                 button.addEventListener('click', () => {
@@ -143,6 +148,7 @@
                     currentAButton = button;
                     loopSingle = false;
                     loopAll = false;
+                    loopRandom = false;
                     updateStatus(`正在播放 ${button.textContent}`);
                 });
             });
@@ -152,11 +158,12 @@
                     if (loopSingle) {
                         audioPlayer.loop = false;
                         loopSingle = false;
-                        updateStatus(`停止循环播放 ${currentAButton.textContent}`);
+                        updateStatus(`正在播放 ${currentAButton.textContent}`);
                     } else {
                         audioPlayer.loop = true;
                         loopSingle = true;
                         loopAll = false;
+                        loopRandom = false;
                         updateStatus(`循环播放 ${currentAButton.textContent}`);
                     }
                 }
@@ -165,6 +172,7 @@
             b2Button.addEventListener('click', () => {
                 loopSingle = false;
                 loopAll = true;
+                loopRandom = false;
                 playAll();
             });
 
@@ -173,7 +181,25 @@
                 audioPlayer.currentTime = 0;
                 loopSingle = false;
                 loopAll = false;
+                loopRandom = false;
                 updateStatus("请选择一个按钮播放音乐");
+            });
+
+            b4Button.addEventListener('click', () => {
+                loopSingle = false;
+                loopAll = false;
+                loopRandom = true;
+                playRandom();
+            });
+
+            b5Button.addEventListener('click', () => {
+                if (audioPlayer.paused) {
+                    audioPlayer.play();
+                    updateStatus(`继续播放 ${currentAButton ? currentAButton.textContent : ''}`);
+                } else {
+                    audioPlayer.pause();
+                    updateStatus(`暂停播放 ${currentAButton ? currentAButton.textContent : ''}`);
+                }
             });
 
             audioPlayer.addEventListener('ended', () => {
@@ -181,6 +207,8 @@
                     audioPlayer.play();
                 } else if (loopAll) {
                     playNext();
+                } else if (loopRandom) {
+                    playRandom();
                 }
             });
 
@@ -197,6 +225,16 @@
                 audioPlayer.src = nextAudioFile;
                 audioPlayer.play();
                 updateStatus(`列表循环播放中\n当前播放歌曲: ${currentAButton.textContent}`);
+            }
+
+            function playRandom() {
+                audioPlayer.loop = false;
+                const randomIndex = Math.floor(Math.random() * aButtons.length);
+                currentAButton = aButtons[randomIndex];
+                const randomAudioFile = currentAButton.getAttribute('data-audio');
+                audioPlayer.src = randomAudioFile;
+                audioPlayer.play();
+                updateStatus(`随机列表播放中\n当前播放歌曲: ${currentAButton.textContent}`);
             }
 
             function updateStatus(text) {
