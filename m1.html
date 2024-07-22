@@ -20,88 +20,68 @@
             flex-direction: column;
         }
 
-        .c1 {
-            position: relative;
-            top: 6.5cm; 
+        .container {
+            display: grid;
+            grid-template-rows: repeat(11, auto); 
+            grid-template-columns: 1fr; 
+            gap: 10px; 
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .homepage {
+            grid-row: 1; 
+            grid-column: 1 / -1; 
             text-align: center;
         }
 
-        .c1 ul {
-            list-style: none; 
-            padding: 0;
-            margin: 0;
-        }
-
-        .c1 ul li {
-            display: inline; 
-        }
-
-        .container {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px;
-            width: 80%; 
-            max-width: 1000px; 
-            margin: 0 auto; 
-        }
-
-        .left-panel, .right-panel {
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8); 
-            border-radius: 10px; 
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-        }
-
-        .left-panel {
-            display: flex;
-            flex-direction: column;
-            margin-right: 20px; 
+        .a-buttons {
+            grid-row: 2 / 4; 
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); 
+            gap: 10px;
         }
 
         .a-button {
-            margin-bottom: 10px; 
-        }
-
-        .right-panel {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .right-panel button {
-            margin-bottom: 20px; 
-        }
-
-        button {
+            width: 100%;
             padding: 10px;
-            font-size: 16px;
-            cursor: pointer;
+            box-sizing: border-box;
+            text-align: center;
         }
 
         .status {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(255, 255, 255, 0.8); 
-            border: 1.2px solid rgb(174, 174, 255); 
-            border-radius: 5px; 
-            padding: 10px; 
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-            text-align: center; 
-            font-size: 18px; 
-            font-weight: bold; 
+            grid-row: 6; 
+            grid-column: 1 / -1; 
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .controls {
+            grid-row: 8; 
+            grid-column: 1 / -1; 
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); 
+            gap: 10px;
+        }
+
+        .controls button {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
         }
     </style>
 </head>
 <body>
-    <div class="c1"> 
-        <ul>
-            <li><a href="index.html">返回首页</a></li>
-        </ul>
-    </div>
     <div class="container">
-        <div class="left-panel">
+        <div class="homepage">
+            <a href="index.html">返回首页</a>
+        </div>
+        <div class="a-buttons">
             <button class="a-button" data-audio="边境.mp3">边境</button>
             <button class="a-button" data-audio="地平线1.mp3">地平线1</button>
             <button class="a-button" data-audio="加勒比海盗.mp3">加勒比海盗</button>
@@ -112,17 +92,31 @@
             <button class="a-button" data-audio="循迹.mp3">循迹</button>
             <button class="a-button" data-audio="异客.mp3">异客</button>
             <button class="a-button" data-audio="异客[改].mp3">异客[改]</button>
+            <button class="a-button" data-audio="企业奋进.mp3">企业奋进</button>
+            <button class="a-button" data-audio="Lifeline.mp3">Lifeline</button>
+            <button class="a-button" data-audio="四字四音.mp3">四字四音</button>
+            <button class="a-button" data-audio="喜剧舞台.mp3">喜剧舞台</button>
+            <button class="a-button" data-audio="琴师二胡3D.mp3">琴师二胡3D</button>
+            <button class="a-button" data-audio="all to well.mp3">all to well</button>
+            <button class="a-button" data-audio="champagne problems.mp3">champagne problems</button>
+            <button class="a-button" data-audio="Love Story.mp3">Love Story</button>
+            <button class="a-button" data-audio="marron.mp3">marron</button>
+            <button class="a-button" data-audio="numb.mp3">numb</button>
+            <button class="a-button" data-audio="Way Back Home.mp3">Way Back Home</button>
+            <button class="a-button" data-audio="You Belong With Me.mp3">You Belong With Me</button>
+            <button class="a-button" data-audio="ハレハレヤ.mp3">ハレハレヤ</button>
+            <button class="a-button" data-audio="Fly Away.mp3">Fly Away</button>
         </div>
-        <div class="right-panel">
+        <div class="status" id="status-text">
+            [循环] 正在播放: 企业奋进
+        </div>
+        <div class="controls">
             <button id="b1">循环播放</button>
             <button id="b2">列表循环</button>
             <button id="b4">随机列表播放</button>
-            <button id="b5">暂停/继续播放</button>
+            <button id="b5">暂停播放</button> 
             <button id="b3">停止音乐</button>
         </div>
-    </div>
-    <div class="status">
-        <p id="status-text">请选择一个按钮播放音乐</p>
     </div>
     <audio id="audio-player"></audio>
     <script>
@@ -149,7 +143,7 @@
                     loopSingle = false;
                     loopAll = false;
                     loopRandom = false;
-                    updateStatus(`正在播放 ${button.textContent}`);
+                    updateStatus();
                 });
             });
 
@@ -158,13 +152,13 @@
                     if (loopSingle) {
                         audioPlayer.loop = false;
                         loopSingle = false;
-                        updateStatus(`正在播放 ${currentAButton.textContent}`);
+                        updateStatus();
                     } else {
                         audioPlayer.loop = true;
                         loopSingle = true;
                         loopAll = false;
                         loopRandom = false;
-                        updateStatus(`循环播放 ${currentAButton.textContent}`);
+                        updateStatus();
                     }
                 }
             });
@@ -182,7 +176,7 @@
                 loopSingle = false;
                 loopAll = false;
                 loopRandom = false;
-                updateStatus("请选择一个按钮播放音乐");
+                updateStatus();
             });
 
             b4Button.addEventListener('click', () => {
@@ -195,10 +189,12 @@
             b5Button.addEventListener('click', () => {
                 if (audioPlayer.paused) {
                     audioPlayer.play();
-                    updateStatus(`继续播放 ${currentAButton ? currentAButton.textContent : ''}`);
+                    updateStatus();
+                    b5Button.textContent = '暂停播放'; 
                 } else {
                     audioPlayer.pause();
-                    updateStatus(`暂停播放 ${currentAButton ? currentAButton.textContent : ''}`);
+                    updateStatus('播放暂停');
+                    b5Button.textContent = '继续播放'; 
                 }
             });
 
@@ -224,7 +220,7 @@
                 const nextAudioFile = currentAButton.getAttribute('data-audio');
                 audioPlayer.src = nextAudioFile;
                 audioPlayer.play();
-                updateStatus(`列表循环播放中\n当前播放歌曲: ${currentAButton.textContent}`);
+                updateStatus();
             }
 
             function playRandom() {
@@ -234,11 +230,22 @@
                 const randomAudioFile = currentAButton.getAttribute('data-audio');
                 audioPlayer.src = randomAudioFile;
                 audioPlayer.play();
-                updateStatus(`随机列表播放中\n当前播放歌曲: ${currentAButton.textContent}`);
+                updateStatus();
             }
 
-            function updateStatus(text) {
-                statusText.textContent = text;
+            function updateStatus(customText) {
+                let loopStatus = '';
+                if (loopSingle) {
+                    loopStatus = '[单曲循环]';
+                } else if (loopAll) {
+                    loopStatus = '[列表循环]';
+                } else if (loopRandom) {
+                    loopStatus = '[随机播放]';
+                }
+                statusText.textContent = `${loopStatus} 正在播放: ${currentAButton ? currentAButton.textContent : '无'}`;
+                if (customText) {
+                    statusText.textContent = customText;
+                }
             }
         });
     </script>
