@@ -5,75 +5,152 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>音乐咖</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-image: url('t6.jpg'); 
-            background-size: cover; 
-            background-repeat: no-repeat; 
-            background-position: center center;
-            margin: 0; 
-            padding: 0; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            min-height: 100vh; 
-            flex-direction: column;
-        }
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('t6.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+}
 
-        .container {
-            display: grid;
-            grid-template-rows: repeat(11, auto); 
-            grid-template-columns: 1fr; 
-            gap: 10px; 
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
-            width: 100%;
-        }
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 外围阴影效果 */
+    border-radius: 10px; /* 添加圆角效果 */
+}
 
-        .homepage {
-            grid-row: 1; 
-            grid-column: 1 / -1; 
-            text-align: center;
-        }
+.homepage {
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    width: 97.5%;
+    max-width: 800px;
+    margin-bottom: 6px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
 
-        .a-buttons {
-            grid-row: 2 / 4; 
-            display: grid;
-            grid-template-columns: repeat(5, 1fr); 
-            gap: 10px;
-        }
+    background-color: #ffffff;
+}
 
-        .a-button {
-            width: 100%;
-            padding: 10px;
-            box-sizing: border-box;
-            text-align: center;
-        }
+.homepage a {
+    text-decoration: none;
+    color: #000;
+}
 
-        .status {
-            grid-row: 6; 
-            grid-column: 1 / -1; 
-            text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-        }
+.status-progress-volume {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    width: 97.5%;
+    max-width: 800px;
+    margin-bottom: 6px;
+    box-sizing: border-box;
+}
 
-        .controls {
-            grid-row: 8; 
-            grid-column: 1 / -1; 
-            display: grid;
-            grid-template-columns: repeat(5, 1fr); 
-            gap: 10px;
-        }
+.section-a, .section-b {
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 800px;
+    box-sizing: border-box;
+    margin-bottom: 6px;
+    background-color: transparent;
+}
 
-        .controls button {
-            width: 100%;
-            padding: 10px;
-            box-sizing: border-box;
-        }
+.a-buttons, .b-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.a-button, .b-button {
+    padding: 9px;
+    font-size: 15px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 7px;
+    border: none;
+    color: #000;
+    cursor: pointer;
+}
+
+.a-button:hover, .b-button:hover {
+    background-color: rgba(251, 247, 8, 0.408);
+}
+
+.status {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.progress-volume {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.progress-container, .volume-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    gap: 5px;
+}
+
+.progress-bar, .volume-bar {
+    width: 50%;
+}
+
+#progress-text, #volume-text {
+    margin: 0;
+}
+
+#volume-text {
+    order: -1;
+}
+
+.controls {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+.controls button {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    background: none;
+    border: none;
+    color: #000;
+    cursor: pointer;
+}
+
+.controls button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
     </style>
 </head>
 <body>
@@ -81,52 +158,67 @@
         <div class="homepage">
             <a href="index.html">返回首页</a>
         </div>
-        <div class="a-buttons">
-            <button class="a-button" data-audio="边境.mp3">边境</button>
-            <button class="a-button" data-audio="地平线1.mp3">地平线1</button>
-            <button class="a-button" data-audio="加勒比海盗.mp3">加勒比海盗</button>
-            <button class="a-button" data-audio="江山令.mp3">江山令</button>
-            <button class="a-button" data-audio="乐高主题曲.mp3">乐高主题曲</button>
-            <button class="a-button" data-audio="黎鸣.mp3">黎鸣</button>
-            <button class="a-button" data-audio="新贵妃醉酒.mp3">新贵妃醉酒</button>
-            <button class="a-button" data-audio="循迹.mp3">循迹</button>
-            <button class="a-button" data-audio="异客.mp3">异客</button>
-            <button class="a-button" data-audio="异客[改].mp3">异客[改]</button>
-            <button class="a-button" data-audio="企业奋进.mp3">企业奋进</button>
-            <button class="a-button" data-audio="Lifeline.mp3">Lifeline</button>
-            <button class="a-button" data-audio="四字四音.mp3">四字四音</button>
-            <button class="a-button" data-audio="喜剧舞台.mp3">喜剧舞台</button>
-            <button class="a-button" data-audio="琴师二胡3D.mp3">琴师二胡3D</button>
-            <button class="a-button" data-audio="all to well.mp3">all to well</button>
-            <button class="a-button" data-audio="champagne problems.mp3">champagne problems</button>
-            <button class="a-button" data-audio="Love Story.mp3">Love Story</button>
-            <button class="a-button" data-audio="marron.mp3">marron</button>
-            <button class="a-button" data-audio="numb.mp3">numb</button>
-            <button class="a-button" data-audio="Way Back Home.mp3">Way Back Home</button>
-            <button class="a-button" data-audio="You Belong With Me.mp3">You Belong With Me</button>
-            <button class="a-button" data-audio="ハレハレヤ.mp3">ハレハレヤ</button>
-            <button class="a-button" data-audio="Fly Away.mp3">Fly Away</button>
+        <div class="status-progress-volume">
+            <div class="status" id="status-text">选择音乐播放</div>
+            <div class="progress-volume">
+                <div class="progress-container">
+                    <div id="progress-text">播放进度</div>
+                    <input type="range" class="progress-bar" id="progress-bar" value="0" max="100">
+                </div>
+                <div class="volume-container">
+                    <input type="range" class="volume-bar" id="volume-bar" value="100" max="100">
+                    <div id="volume-text">音量</div>
+                </div>
+            </div>
         </div>
-        <div class="status" id="status-text">
-            选择音乐播放
+        <div class="section-a">
+            <div class="a-buttons">
+                <button class="a-button" data-audio="边境.mp3">边境</button>
+                <button class="a-button" data-audio="地平线1.mp3">地平线1</button>
+                <button class="a-button" data-audio="加勒比海盗.mp3">加勒比海盗</button>
+                <button class="a-button" data-audio="江山令.mp3">江山令</button>
+                <button class="a-button" data-audio="乐高主题曲.mp3">乐高主题曲</button>
+                <button class="a-button" data-audio="黎鸣.mp3">黎鸣</button>
+                <button class="a-button" data-audio="新贵妃醉酒.mp3">新贵妃醉酒</button>
+                <button class="a-button" data-audio="循迹.mp3">循迹</button>
+                <button class="a-button" data-audio="异客.mp3">异客</button>
+                <button class="a-button" data-audio="异客[改].mp3">异客[改]</button>
+                <button class="a-button" data-audio="企业奋进.mp3">企业奋进</button>
+                <button class="a-button" data-audio="Lifeline.mp3">Lifeline</button>
+                <button class="a-button" data-audio="四字四音.mp3">四字四音</button>
+                <button class="a-button" data-audio="喜剧舞台.mp3">喜剧舞台</button>
+                <button class="a-button" data-audio="琴师二胡3D.mp3">琴师二胡3D</button>
+                <button class="a-button" data-audio="all to well.mp3">all to well</button>
+                <button class="a-button" data-audio="champagne problems.mp3">champagne problems</button>
+                <button class="a-button" data-audio="Love Story.mp3">Love Story</button>
+                <button class="a-button" data-audio="marron.mp3">marron</button>
+                <button class="a-button" data-audio="numb.mp3">numb</button>
+                <button class="a-button" data-audio="Way Back Home.mp3">Way Back Home</button>
+                <button class="a-button" data-audio="You Belong With Me.mp3">You Belong With Me</button>
+                <button class="a-button" data-audio="ハレハレヤ.mp3">ハレハレヤ</button>
+                <button class="a-button" data-audio="Fly Away.mp3">Fly Away</button>
+            </div>
         </div>
-        <div class="controls">
-            <button id="b1">循环播放</button>
-            <button id="b2">列表循环</button>
-            <button id="b4">随机列表播放</button>
-            <button id="b5">暂停播放</button> 
-            <button id="b3">停止音乐</button>
+        <div class="section-b">
+            <div class="b-buttons">
+                <button class="b-button" id="b1">循环播放</button>
+                <button class="b-button" id="b2">列表循环</button>
+                <button class="b-button" id="b4">随机列表播放</button>
+                <button class="b-button" id="b5">暂停播放</button> 
+                <button class="b-button" id="b3">停止音乐</button>
+            </div>
         </div>
     </div>
+    <audio id="audio-player"></audio>
     <audio id="audio-player"></audio>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const audioPlayer = document.getElementById('audio-player');
             const statusText = document.getElementById('status-text');
-            let currentAButton = null;
-            let loopSingle = false;
-            let loopAll = false;
-            let loopRandom = false;
+            const progressBar = document.getElementById('progress-bar');
+            const volumeBar = document.getElementById('volume-bar');
+            const progressText = document.getElementById('progress-text');
+            const volumeText = document.getElementById('volume-text');
             const aButtons = document.querySelectorAll('.a-button');
             const b1Button = document.getElementById('b1');
             const b2Button = document.getElementById('b2');
@@ -134,49 +226,42 @@
             const b4Button = document.getElementById('b4');
             const b5Button = document.getElementById('b5');
 
+            let loopSingle = false;
+            let loopAll = false;
+            let loopRandom = false;
+            let currentAButton = null;
+
             aButtons.forEach(button => {
                 button.addEventListener('click', () => {
+                    currentAButton = button;
                     const audioFile = button.getAttribute('data-audio');
                     audioPlayer.src = audioFile;
                     audioPlayer.play();
-                    currentAButton = button;
-                    loopSingle = false;
-                    loopAll = false;
-                    loopRandom = false;
                     updateStatus();
                 });
             });
 
             b1Button.addEventListener('click', () => {
-                if (currentAButton) {
-                    if (loopSingle) {
-                        audioPlayer.loop = false;
-                        loopSingle = false;
-                        updateStatus();
-                    } else {
-                        audioPlayer.loop = true;
-                        loopSingle = true;
-                        loopAll = false;
-                        loopRandom = false;
-                        updateStatus();
-                    }
-                }
+                loopSingle = !loopSingle;
+                audioPlayer.loop = loopSingle;
+                updateStatus();
             });
 
             b2Button.addEventListener('click', () => {
                 loopSingle = false;
-                loopAll = true;
-                loopRandom = false;
-                playAll();
+                loopAll = !loopAll;
+                if (loopAll) {
+                    playAll();
+                } else {
+                    audioPlayer.loop = false;
+                }
+                updateStatus();
             });
 
             b3Button.addEventListener('click', () => {
                 audioPlayer.pause();
                 audioPlayer.currentTime = 0;
-                loopSingle = false;
-                loopAll = false;
-                loopRandom = false;
-                updateStatus();
+                updateStatus('音乐停止播放');
             });
 
             b4Button.addEventListener('click', () => {
@@ -189,11 +274,9 @@
             b5Button.addEventListener('click', () => {
                 if (audioPlayer.paused) {
                     audioPlayer.play();
-                    updateStatus();
                     b5Button.textContent = '暂停播放'; 
                 } else {
                     audioPlayer.pause();
-                    updateStatus('播放暂停');
                     b5Button.textContent = '继续播放'; 
                 }
             });
@@ -206,6 +289,19 @@
                 } else if (loopRandom) {
                     playRandom();
                 }
+            });
+
+            audioPlayer.addEventListener('timeupdate', () => {
+                const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+                progressBar.value = progress;
+            });
+
+            progressBar.addEventListener('input', () => {
+                audioPlayer.currentTime = (progressBar.value / 100) * audioPlayer.duration;
+            });
+
+            volumeBar.addEventListener('input', () => {
+                audioPlayer.volume = volumeBar.value / 100;
             });
 
             function playAll() {
@@ -234,19 +330,20 @@
             }
 
             function updateStatus(customText) {
-                let loopStatus = '';
-                if (loopSingle) {
-                    loopStatus = '[单曲循环]';
-                } else if (loopAll) {
-                    loopStatus = '[列表循环]';
-                } else if (loopRandom) {
-                    loopStatus = '[随机播放]';
-                }
-                statusText.textContent = `${loopStatus} 正在播放: ${currentAButton ? currentAButton.textContent : '无'}`;
-                if (customText) {
-                    statusText.textContent = customText;
-                }
-            }
+    let loopStatus = '';
+    if (loopSingle) {
+        loopStatus = '[单曲循环]';
+    } else if (loopAll) {
+        loopStatus = '[列表循环]';
+    } else if (loopRandom) {
+        loopStatus = '[随机播放]';
+    }
+    statusText.textContent = `${loopStatus} 正在播放: ${currentAButton ? currentAButton.textContent : '无'}`;
+    if (customText) {
+        statusText.textContent = customText;
+    }
+}
+
         });
     </script>
 </body>
