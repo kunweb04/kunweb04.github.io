@@ -29,8 +29,8 @@ body {
     max-width: 800px;
     width: 100%;
     margin: 0 auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 外围阴影效果 */
-    border-radius: 10px; /* 添加圆角效果 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    border-radius: 10px; 
 }
 
 .homepage {
@@ -64,7 +64,7 @@ body {
     box-sizing: border-box;
 }
 
-.section-a, .section-b {
+.section-b {
     padding: 10px;
     border-radius: 10px;
     width: 100%;
@@ -74,7 +74,32 @@ body {
     background-color: transparent;
 }
 
-.a-buttons, .b-buttons {
+.section-a {
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 800px;
+    box-sizing: border-box;
+    margin-bottom: 6px;
+    background-color: transparent;
+    overflow-y: auto; 
+    max-height: 300px; 
+    scrollbar-width: none; 
+}
+
+.section-a::-webkit-scrollbar {
+    display: none; 
+}
+
+.b-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.a-buttons {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 10px;
@@ -197,6 +222,30 @@ body {
                 <button class="a-button" data-audio="You Belong With Me.mp3">You Belong With Me</button>
                 <button class="a-button" data-audio="ハレハレヤ.mp3">ハレハレヤ</button>
                 <button class="a-button" data-audio="Fly Away.mp3">Fly Away</button>
+                <button class="a-button" data-audio="Monody.mp3">Monody</button>
+                <button class="a-button" data-audio="Walk Thru Fire.mp3">Walk Thru Fire</button>
+                <button class="a-button" data-audio="すずめ.mp3">すずめ</button>
+                <button class="a-button" data-audio="ハロ.mp3">ハロ</button>
+                <button class="a-button" data-audio="不染古琴.mp3">不染古琴</button>
+                <button class="a-button" data-audio="前前前世.mp3">前前前世</button>
+                <button class="a-button" data-audio="打上花火.mp3">打上花火</button>
+                <button class="a-button" data-audio="時代を越える想い.mp3">時代を越える想い</button>
+                <button class="a-button" data-audio="芒种.mp3">芒种</button>
+                <button class="a-button" data-audio="See You Again.mp3">See You Again</button>
+                <button class="a-button" data-audio="山鬼.mp3">山鬼</button>
+                <button class="a-button" data-audio="火紅的薩日朗.mp3">火紅的薩日朗</button>
+                <button class="a-button" data-audio="笑納.mp3">笑納</button>
+                <button class="a-button" data-audio=".mp3"></button>
+                <button class="a-button" data-audio=".mp3"></button>
+                <button class="a-button" data-audio=".mp3"></button>
+                <button class="a-button" data-audio=".mp3"></button>
+                <button class="a-button" data-audio=".mp3"></button>
+                <button class="a-button" data-audio=".mp3"></button>
+                <button class="a-button" data-audio=".mp3"></button>
+                <button class="a-button" data-audio=".mp3"></button>
+                <button class="a-button" data-audio=".mp3"></button>
+                <button class="a-button" data-audio=".mp3"></button>
+                <button class="a-button" data-audio=".mp3"></button>
             </div>
         </div>
         <div class="section-b">
@@ -261,7 +310,7 @@ body {
             b3Button.addEventListener('click', () => {
                 audioPlayer.pause();
                 audioPlayer.currentTime = 0;
-                updateStatus('音乐停止播放');
+                updateStatus('选择音乐播放');
             });
 
             b4Button.addEventListener('click', () => {
@@ -342,9 +391,8 @@ body {
     if (customText) {
         statusText.textContent = customText;
     }
-}
-
-        });
+    }
+    });
     </script>
 </body>
 </html>
