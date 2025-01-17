@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="个人简介">
+    <link rel="icon" href="kunlogo.png" type="image/png">
+    <title>个人简介</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 粘性页首 -->
+    <div class="sticky-header">
+        <div class="menu-icon" onclick="toggleSidebar()">☰</div>
+        <h1>Kun's Personal Website</h1>
+    </div>
+
+    <!-- 侧边栏 -->
+    <div class="sidebar" id="sidebar">
+        <span class="close-btn" onclick="toggleSidebar()">&times;</span>
+        <h2>导航菜单</h2>
+        <div class="nav-items">
+            <a href="https://kunweb04.github.io/introduce2/index.html" target="_blank">个人简介</a>
+            <a href="https://kunweb04.github.io/music/index.html" target="_blank">音乐播放</a>
+        </div>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/kunzhe0417" target="_blank">Instagram</a>
+            <a href="https://discord.com/invite/TAtjJKjf" target="_blank">Discord</a>
+        </div>
+    </div>
+
+    <div class="container fade-in">
+        <!-- 顶部横幅 -->
+        <header class="header">
+            <h1>Kun</h1>
+            <p>网页工程师 | 丑照摄影师</p>
+        </header>
+
+        <!-- 个人简介 -->
+        <section class="about fade-in">
+            <h2>关于我</h2>
+            <p>典型白羊座，对于计算机非常感兴趣。</p>
+        </section>
+
+        <!-- 兴趣爱好 -->
+        <section class="interests fade-in">
+            <div class="interest-item">
+                <h3>羽毛球</h3>
+                <p>单打爱好者</p>
+            </div>
+            <div class="interest-item">
+                <h3>网页设计</h3>
+                <p>主修前端架设、设计</p>
+            </div>
+            <div class="interest-item">
+                <h3>摄影</h3>
+                <p>主玩抓拍、尤其是抓拍丑照</p>
+            </div>
+            <div class="interest-item">
+                <h3>信息汇整</h3>
+                <p>做一些数据分析，研究</p>
+            </div>
+            <div class="interest-item">
+                <h3>晶体养殖</h3>
+                <p>培养各种晶系的晶体</p>
+            </div>
+        </section>
+
+        <!-- Sam 卡片 -->
+    <section class="sam-card fade-in">
+        <h1 class="section-title">我的导师</h1>
+        <div class="card">
+                <div class="left-container">
+                    <img src="sam1.png" alt="SamHacker 头像">
+                    <h2>SamHacker</h2>
+                </div>
+                <!-- Y形分割线 -->
+                <div class="divider"></div>
+                <div class="right-container">
+                    <h3>导师资料</h3>
+                    <p>台湾国三学生，程序设计热爱者，开源贡献者，Minecraft 玩家及雲羽生存服服主。</p>
+                    <table>
+                        <tr>
+                            <td>身份</td>
+                            <td>台湾国三学生者</td>
+                        </tr>
+                        <tr>
+                            <td>专长</td>
+                            <td>程序设计与开源贡献</td>
+                        </tr>
+                        <tr>
+                            <td>兴趣</td>
+                            <td>Minecraft 玩家 & 云羽生存服 服主</td>
+                        </tr>
+                    </table>
+                    <div class="social-icons">
+                        <a href="https://github.com/samhacker" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://samhacker.wordpress.com" target="_blank">
+                            <i class="fab fa-wordpress"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>        
+
+        <!-- 技能展示 -->
+        <section class="skills fade-in">
+            <h2>我的技能</h2>
+                <div class="skill">
+                    <h3>摄影</h3>
+                    <div class="skill-bar">
+                        <div class="progress photography">60%</div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <h3>HTML</h3>
+                    <div class="skill-bar">
+                        <div class="progress html">80%</div>
+                    </div>
+                <div class="skill">
+                    <h3>CSS</h3>
+                    <div class="skill-bar">
+                        <div class="progress css">70%</div>
+                    </div>
+                    </div>
+                <div class="skill">
+                    <h3>JavaScript</h3>
+                    <div class="skill-bar">
+                        <div class="progress javascript">25%</div>
+                    </div>
+                    </div>
+            </section>
+    
+            <!-- 作品集部分 -->
+        <section class="portfolio fade-in">
+            <h2>我的作品</h2>
+            <div class="portfolio-items">
+            <div class="portfolio-item">
+            <a href="https://kunweb04.github.io/introduce/index.html" target="_blank">项目一：个人介绍网站</a>
+            <p>我的第一个网页</p>
+            <p>放置了我的一部分讯息</p>
+            </div>
+            <div class="portfolio-item">
+            <a href="https://kunweb04.github.io/music/index.html" target="_blank">项目二：音乐播放器</a>
+            <p>一个简洁的音乐播放工具。</p>
+            <p>歌曲含200余首，持续更新中</p>
+            </div>
+            <div class="portfolio-item">
+            <a href="https://kunweb04.github.io/test/" target="_blank">项目三：SASS预编译器应用</a>
+            <p>初次使用预编译器SASS的示例项目。</p>
+            <p>一个太空主题的动态背景</p>
+            </div>
+            <div class="portfolio-item">
+            <a href="https://kunweb04.github.io/test/game1/game1.html" target="_blank">项目四：游戏集</a>
+            <p>无聊时制作的小游戏</p>
+            <p>
+            游戏1：<a href="https://kunweb04.github.io/test/game1/game1.html" target="_blank">问答挑战</a>，
+            游戏2：<a href="https://kunweb04.github.io/test/game2/" target="_blank">反应测试</a>，
+            游戏3：<a href="https://kunweb04.github.io/test/game3/index.html" target="_blank">数字猜谜</a>。
+            </p>
+            </div>
+            <div class="portfolio-item">
+            <a href="https://kunweb04.github.io/work/workcrystal/" target="_blank">项目五：晶体化学作品</a>
+            <p>研究各种物质混晶的项目作品图</p>
+            <p>更新较缓</p>
+            </div>
+            <div class="portfolio-item">
+            <a href="https://kunweb04.github.io/Website/" target="_blank">项目六：网页工作室</a>
+            <p>帮助有需要的人制作自己的网页</p>
+            <p>价格实惠</p>
+            </div>
+            </div>
+        </section>
+
+            <!-- 联系方式部分 -->
+            <section class="contact fade-in">
+                <h2>联系我</h2>
+                <p>如果你有任何问题或者想要合作，请随时联系我！</p>
+                <form action="https://formspree.io/f/mnnaygvd" method="POST">
+                    <label for="name">昵称:</label>
+                    <input type="text" id="name" name="name" required>
+            
+                    <label for="email">电子邮件:</label>
+                    <input type="email" id="email" name="email" required>
+            
+                    <label for="message">消息:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+            
+                    <button type="submit">发送</button>
+                </form>
+            </section>
+        </div>
+    
+        <!-- 页脚 -->
+        <footer>
+            <p>&copy; 2024 Kun Introduce</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/kunzhe0417/?igsh=MWQzODBvNXljajVqdw%3D%3D" target="_blank">Instagram</a>
+                <a href="https://discord.com/invite/TAtjJKjf" target="_blank">Discord</a>
+            </div>
+        </footer>
+
+    <!-- 主题切换按钮 -->
+    <button class="theme-switch" onclick="toggleTheme()">切换主题</button>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
