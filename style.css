@@ -241,8 +241,23 @@ body {
 h3 {
     font-size: 24px;
     font-weight: 600;
-    color: #1daafb; /* 个人资料标题颜色，温和深色 */
+    color: #156ff6; /* 个人资料标题颜色，温和深色 */
     margin-bottom: 8px;
+}
+
+.card p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #000000; /* 文字颜色更深，保持可读性 */
+    margin-bottom: 15px;
+}
+
+table {
+    margin-top: 10px;
+    width: 100%;
+    font-size: 16px;
+    color: #000000; /* 文字颜色更深 */
+    border-collapse: collapse;
 }
 
 td {
@@ -253,7 +268,7 @@ td {
 
 td:first-child {
     font-weight: bold;
-    color: #2f4050; /* 更深的颜色 */
+    color: #154ef6; /* 更深的颜色 */
 }
 
 .social-icons {
