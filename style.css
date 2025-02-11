@@ -192,7 +192,7 @@ body {
 }
 
 .card {
-    background: linear-gradient(145deg, #d0e1f9, #b8cce4); /* 温和的渐变色 */
+    background: linear-gradient(145deg, #d0e1f9, #b3d5ff); /* 温和的渐变色 */
     width: 700px;
     border-radius: 20px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* 轻微的阴影 */

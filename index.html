@@ -2,581 +2,207 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="google-site-verification" content="boZb7a_CJtIxYujhyRGgdcNkRtGZL4oc2efjgBe_5ME" />
-    <link rel="icon" href="icon.png" type="image/png">
-    <title>晶体培养指南</title>
-    <style>
-        :root {
-            --primary: #2A5C84;
-            --secondary: #5DA8B3;
-            --accent: #C4D4E0;
-            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, sans-serif;
-        }
-
-        body {
-            background: linear-gradient(15deg, #f8f9ff 0%, #e8f4ff 100%);
-            line-height: 1.6;
-            color: #333;
-        }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .hero {
-            background: linear-gradient(135deg, 
-                rgba(42,92,132,0.95) 0%, 
-                rgba(93,168,179,0.95) 100%),
-                url('data:image/svg+xml,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="%232A5C84" /><path d="M50 0L100 50L50 100L0 50Z" fill="%235DA8B3" opacity="0.2"/></svg>');
-            padding: 6rem 2rem;
-            border-radius: 24px;
-            margin: 2rem 0;
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 8px 32px rgba(42,92,132,0.1);
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, 
-                rgba(255,255,255,0.1) 0%, 
-                transparent 70%);
-            animation: glow 8s infinite linear;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60%;
-            height: 40px;
-            background: linear-gradient(180deg, 
-                rgba(255,255,255,0.3) 0%, 
-                transparent 100%);
-            filter: blur(10px);
-            z-index: -1;
-        }
-
-        @keyframes glow {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.8;
-            opacity: 0.9;
-        }
-
-        .section-divider {
-            height: 1px;
-            background: linear-gradient(90deg, 
-                transparent 0%, 
-                var(--accent) 50%, 
-                transparent 100%);
-            margin: 3rem 0;
-            position: relative;
-        }
-
-        .section-divider::after {
-            content: '◆';
-            position: absolute;
-            left: 50%;
-            top: -0.8em;
-            transform: translateX(-50%);
-            color: var(--secondary);
-            background: white;
-            padding: 0 0.5em;
-        }
-
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-
-        .section-title::before {
-            content: '';
-            width: 30px;
-            height: 3px;
-            background: var(--secondary);
-        }
-
-        .section-title::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(90deg, 
-                var(--accent) 0%, 
-                transparent 100%);
-        }
-
-        /* 卡片系统 */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-auto-flow: dense;
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .card {
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-            transition: var(--transition);
-            position: relative;
-            transform-style: preserve-3d;
-        }
-
-        .card:hover {
-            transform: translateY(-8px) rotateX(2deg) rotateY(2deg);
-            box-shadow: 0 12px 40px rgba(42,92,132,0.15);
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(45deg, 
-                rgba(93,168,179,0.1) 0%, 
-                transparent 50%);
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .card:hover::before {
-            opacity: 1;
-        }
-
-        .card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            border-bottom: 3px solid var(--accent);
-            transition: var(--transition);
-        }
-
-        .card:hover img {
-            transform: scale(1.05);
-        }
-
-        .card-content {
-            padding: 1.8rem;
-            display: grid;
-            grid-template-rows: auto 1fr auto;
-            min-height: 240px;
-        }
-
-        .card h3 {
-            color: var(--primary);
-            margin-bottom: 0.8rem;
-            font-size: 1.4rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .card h3::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: var(--secondary);
-            border-radius: 50%;
-        }
-
-        .card p {
-            color: #666;
-            line-height: 1.7;
-            margin-bottom: 1.2rem;
-        }
-
-        .card-footer {
-            border-top: 1px solid rgba(93,168,179,0.1);
-            padding-top: 1.2rem;
-            margin-top: auto;
-        }
-
-        .card a {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 0.8rem 1.6rem;
-            background: var(--primary);
-            color: white;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card a::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, 
-                transparent 25%,
-                rgba(255,255,255,0.2) 50%,
-                transparent 75%);
-            animation: buttonGlow 3s infinite linear;
-        }
-
-        .card a:hover {
-            background: var(--secondary);
-            transform: translateY(-2px);
-        }
-
-        .card a[disabled] {
-            background: #e0e0e0;
-            color: #9e9e9e;
-            cursor: not-allowed;
-            position: relative;
-        }
-
-        .card a[disabled]::after {
-            content: "即将上线";
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: var(--secondary);
-            color: white;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-        }
-
-        @keyframes buttonGlow {
-            0% { transform: translateX(-50%) rotate(45deg); }
-            100% { transform: translateX(50%) rotate(45deg); }
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-            
-            .hero {
-                padding: 4rem 1rem;
-                border-radius: 12px;
-            }
-            
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .card {
-                margin: 0 0.5rem;
-            }
-            
-            .card img {
-                height: 180px;
-            }
-
-            .section-title {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
-            }
-
-            .card-grid {
-                grid-template-columns: 1fr; 
-            }
-
-            .section-title::before,
-            .section-title::after {
-                width: 100%;
-            }
-        }
-
-        .image-container {
-            position: relative;
-            overflow: hidden; 
-        }
-
-        .image-container img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            border-bottom: 3px solid var(--accent);
-            transition: var(--transition);
-        }
-
-        .author-name {
-            position: absolute;
-            left: 1px; 
-            bottom: 10px;
-            color: white; 
-            background-color: rgba(0, 0, 0, 0.5); 
-            padding: 4px 8px; 
-            border-radius: 4px; 
-            font-size: 0.9rem; 
-            z-index: 1; 
-        }
-
-        .site-footer {
-            padding: 1.5rem 2rem;
-            color: var(--primary);
-            background: var(--accent);
-            margin-top: 3rem;
-            text-align: left;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-        }
-
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="个人简介">
+    <link rel="icon" href="kunlogo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>个人简介</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <main class="content">
-            <section class="hero">
-                <h1>晶体培养指南</h1>
-                <p>
-                    学习晶体化学知识，从基础结晶到培养技术<br>
-                    新人向内容，一些我的见解
-                </p>
-            </section>
-
-            <div class="section-title">
-                <h2>须知</h2>
-            </div>
-            <div class="card-grid">
-                <article class="card">
-                    <img src="crystal00_1.png" alt="安全与操作" loading="lazy">
-                    <div class="card-content">
-                        <div>
-                            <h3>安全与操作规范</h3>
-                            <p class="card-meta">新人必读 · 定期回看</p>
-                        </div>
-                        <p>每一个人在制作晶体前都需要了解的重要知识</p>
-                        <div class="card-footer">
-                            <a href="001.html">阅读全文 →</a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <div class="image-container">
-                    <img src="westleaf01.png" alt="投稿" loading="lazy">
-                    <div class="author-name">图源：westleaf</div> 
-                </div>
-                    <div class="card-content">
-                        <div>
-                            <h3>投稿与建议</h3>
-                            <p class="card-meta">给与建议 · 投稿内容</p>
-                        </div>
-                        <p>欢迎投稿作品于此或投稿纠正本站内容</p>
-                        <div class="card-footer">
-                            <a href="002.html">阅读全文 →</a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <div class="image-container">
-                    <img src="迷路的野指针.png" alt="作品" loading="lazy">
-                    <div class="author-name">图源：迷路的野指针</div> 
-                </div>
-                    <div class="card-content">
-                        <div>
-                            <h3>大佬作品集</h3>
-                            <p class="card-meta">匠心独运 · 结晶之美</p>
-                        </div>
-                        <p>精选大佬们的匠心之作，每一颗晶体都凝聚着独特的艺术与科学之美</p>
-                        <div class="card-footer">
-                            <a href="07.html">查看作品 →</a>
-                        </div>
-                    </div>
-                </article>
-
-            </div>
-
-            <div class="section-title">
-                <h2>专题</h2>
-            </div>
-            <div class="card-grid">
-                <article class="card">
-                    <div class="image-container">
-                    <img src="indexc2_01.png" alt="结晶方式" loading="lazy">
-                    <div class="author-name">图源：LX虫管吖Galvin</div> 
-                </div>
-                    <div class="card-content">
-                        <div>
-                            <h3>结晶方式</h3>
-                            <p class="card-meta">基础方法 · 操作指南</p>
-                        </div>
-                        <p>掌握基础结晶原理，了解溶液配置与操作注意事项。</p>
-                        <div class="card-footer">
-                            <a href="01.html">阅读全文 →</a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <div class="image-container">
-                    <img src="indexc2_02.png" alt="入门晶体" loading="lazy">
-                    <div class="author-name">图源：紫色硫酸铜</div> 
-                </div>
-                    <div class="card-content">
-                        <div>
-                            <h3>入门晶体</h3>
-                            <p class="card-meta">单晶培养 · 溶液控制</p>
-                        </div>
-                        <p>开始接触晶体化学这门有趣的科目，有哪些晶体可以制作？</p>
-                        <div class="card-footer">
-                            <a href="w1.html">阅读全文 →</a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <div class="image-container">
-                    <img src="浅梦新河02.png" alt="溶液配置" loading="lazy">
-                    <div class="author-name">图源：浅梦新河</div> 
-                </div>
-                    <div class="card-content">
-                        <div>
-                            <h3>溶液配置</h3>
-                            <p class="card-meta">注意事项 · 浓度配置</p>
-                        </div>
-                        <p>溶液配置的注意事项，新人需要了解的大致内容</p>
-                        <div class="card-footer">
-                            <a href="05.html">阅读全文 →</a>
-                        </div>
-                    </div>
-                </article>
-            
-            </div>
-
-            <div class="section-title">
-                <h2>其他</h2>
-            </div>
-            <div class="card-grid">
-                <article class="card">
-                    <div class="image-container">
-                    <img src="浅梦新河.png" alt="保存方法" loading="lazy">
-                    <div class="author-name">图源：浅梦新河</div> 
-                </div>
-                    <div class="card-content">
-                        <div>
-                            <h3>晶体保存</h3>
-                            <p class="card-meta">怎么保存 · 长期保存</p>
-                        </div>
-                        <p>了解6大保存法的优缺点，选自己最适合的方法</p>
-                        <div class="card-footer">
-                            <a href="04.html">阅读全文 →</a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <div class="image-container">
-                    <img src="浅梦新河03.png" alt="晶体摄影" loading="lazy">
-                    <div class="author-name">图源：浅梦新河</div> 
-                </div>
-                    <div class="card-content">
-                        <div>
-                            <h3>晶体摄影</h3>
-                            <p class="card-meta">晶体作品 · 拍摄技巧</p>
-                        </div>
-                        <p>怎么拍才能把晶体拍得好看？都有哪些技巧呢？</p>
-                        <div class="card-footer">
-                            <a href="06.html">阅读全文 →</a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <img src="book.png" alt="" loading="lazy">
-                    <div class="card-content">
-                        <div>
-                            <h3>图书馆</h3>
-                            <p class="card-meta">电子书刊 · 自学推荐</p>
-                        </div>
-                        <p>一些更为学术性、内容更为丰富的书刊推荐。对这个领域想深造的十分友好。</p>
-                        <div class="card-footer">
-                            <a href="08.html">前往阅读</a>
-                        </div>
-                    </div>
-                </article>
-
-            </div>
-
-            <div class="section-divider"></div>
-        </main>
-
-        <footer class="site-footer">
-            声明：本站内容主要让新人快速入门，日后有时间再制作详细补充<br>
-            本站作者：麒麟（kun）
-        </footer>
+    <!-- 粘性页首 -->
+    <div class="sticky-header">
+        <div class="menu-icon" onclick="toggleSidebar()">☰</div>
+        <h1>Kun's Personal Website</h1>
     </div>
 
-    <script>
-        // 交互功能
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+    <!-- 侧边栏 -->
+    <div class="sidebar" id="sidebar">
+        <span class="close-btn" onclick="toggleSidebar()">&times;</span>
+        <h2>导航菜单</h2>
+        <div class="nav-items">
+            <a href="https://kunweb04.github.io/introduce2/index.html" target="_blank">个人简介</a>
+            <a href="https://kunweb04.github.io/music/index.html" target="_blank">音乐播放</a>
+        </div>
+    </div>
 
-        document.querySelectorAll('a[disabled]').forEach(link => {
-            link.addEventListener('click', (e) => e.preventDefault());
-        });
+    <div class="container fade-in">
+        <!-- 顶部横幅 -->
+        <header class="header">
+            <h1>Kun</h1>
+            <p>网页工程师 | 丑照摄影师</p>
+        </header>
 
-        // 卡片动态效果
-        document.querySelectorAll('.card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
-            });
-        });
+        <!-- 个人简介 -->
+        <section class="about fade-in">
+            <h2>关于我</h2>
+            <p>典型白羊座，对于计算机非常感兴趣。</p>
+        </section>
 
-        // 图片加载处理
-        document.querySelectorAll('img[loading="lazy"]').forEach(img => {
-            img.style.opacity = 0;
-            img.addEventListener('load', () => {
-                img.style.opacity = 1;
-                img.style.transition = 'opacity 0.6s ease';
-            });
-        });
-    </script>
+        <!-- 兴趣爱好 -->
+        <section class="interests fade-in">
+            <div class="interest-item">
+                <h3>羽毛球</h3>
+                <p>单打爱好者</p>
+            </div>
+            <div class="interest-item">
+                <h3>网页设计</h3>
+                <p>主修前端架设、设计</p>
+            </div>
+            <div class="interest-item">
+                <h3>摄影</h3>
+                <p>主玩抓拍、尤其是抓拍丑照</p>
+            </div>
+            <div class="interest-item">
+                <h3>信息汇整</h3>
+                <p>做一些数据分析，研究</p>
+            </div>
+            <div class="interest-item">
+                <h3>晶体养殖</h3>
+                <p>培养各种晶系的晶体</p>
+            </div>
+        </section>
+
+        <!-- Sam 卡片 -->
+    <section class="sam-card fade-in">
+        <h1 class="section-title">我的导师</h1>
+        <div class="card">
+                <div class="left-container">
+                    <img src="sam1.png" alt="SamHacker 头像">
+                    <h2>SamHacker</h2>
+                </div>
+                <!-- Y形分割线 -->
+                <div class="divider"></div>
+                <div class="right-container">
+                    <h3>导师资料</h3>
+                    <p>台湾国三学生，程序设计热爱者，开源贡献者，Minecraft 玩家及雲羽生存服服主。</p>
+                    <table>
+                        <tr>
+                            <td>身份</td>
+                            <td>台湾国三学生</td>
+                        </tr>
+                        <tr>
+                            <td>专长</td>
+                            <td>程序设计与开源贡献</td>
+                        </tr>
+                        <tr>
+                            <td>兴趣</td>
+                            <td>Minecraft 玩家 & 云羽生存服 服主</td>
+                        </tr>
+                    </table>
+                    <div class="social-icons">
+                        <a href="https://github.com/samhacker" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://samhacker.wordpress.com" target="_blank">
+                            <i class="fab fa-wordpress"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>        
+
+        <!-- 技能展示 -->
+        <section class="skills fade-in">
+            <h2>我的技能</h2>
+                <div class="skill">
+                    <h3>摄影</h3>
+                    <div class="skill-bar">
+                        <div class="progress photography">60%</div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <h3>HTML</h3>
+                    <div class="skill-bar">
+                        <div class="progress html">80%</div>
+                    </div>
+                <div class="skill">
+                    <h3>CSS</h3>
+                    <div class="skill-bar">
+                        <div class="progress css">70%</div>
+                    </div>
+                    </div>
+                <div class="skill">
+                    <h3>JavaScript</h3>
+                    <div class="skill-bar">
+                        <div class="progress javascript">25%</div>
+                    </div>
+                    </div>
+            </section>
+    
+            <!-- 作品集部分 -->
+        <section class="portfolio fade-in">
+            <h2>我的作品</h2>
+            <div class="portfolio-items">
+            <div class="portfolio-item">
+            <a href="https://kunweb04.github.io/introduce/index.html" target="_blank">项目一：个人介绍网站</a>
+            <p>我的第一个网页</p>
+            <p>放置了我的一部分讯息</p>
+            </div>
+            <div class="portfolio-item">
+            <a href="https://kunweb04.github.io/music/index.html" target="_blank">项目二：音乐播放器</a>
+            <p>一个简洁的音乐播放工具。</p>
+            <p>歌曲含200余首，持续更新中</p>
+            </div>
+            <div class="portfolio-item">
+            <a href="https://kunweb04.github.io/test/" target="_blank">项目三：SASS预编译器应用</a>
+            <p>初次使用预编译器SASS的示例项目。</p>
+            <p>一个太空主题的动态背景</p>
+            </div>
+            <div class="portfolio-item">
+            <a href="https://kunweb04.github.io/test/game1/game1.html" target="_blank">项目四：游戏集</a>
+            <p>无聊时制作的小游戏</p>
+            <p>
+            游戏1：<a href="https://kunweb04.github.io/test/game1/game1.html" target="_blank">问答挑战</a>，
+            游戏2：<a href="https://kunweb04.github.io/test/game2/" target="_blank">反应测试</a>，
+            游戏3：<a href="https://kunweb04.github.io/test/game3/index.html" target="_blank">数字猜谜</a>。
+            </p>
+            </div>
+            <div class="portfolio-item">
+            <a href="https://kunweb04.github.io/Website/" target="_blank">项目五：网页工作室</a>
+            <p>帮助有需要的人制作自己的网页</p>
+            <p>价格实惠</p>
+            </div>
+            <div class="portfolio-item">
+            <a href="https://kunweb04.github.io/workcrystal/" target="_blank">项目六：晶体化学专题</a>
+            <p>分享我认为新手容易犯错的专文</p>
+            <p>更新较缓</p>
+            </div>
+            </div>
+        </section>
+
+            <!-- 联系方式部分 -->
+            <section class="contact fade-in">
+                <h2>联系我</h2>
+                <p>如果你有任何问题或者想要合作，请随时联系我！</p>
+                <form action="https://formspree.io/f/mnnaygvd" method="POST">
+                    <label for="name">昵称:</label>
+                    <input type="text" id="name" name="name" required>
+            
+                    <label for="email">电子邮件:</label>
+                    <input type="email" id="email" name="email" required>
+            
+                    <label for="message">消息:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+            
+                    <button type="submit">发送</button>
+                </form>
+            </section>
+        </div>
+    
+        <!-- 页脚 -->
+        <footer>
+            <p>&copy; 2024 Kun Introduce</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/kunzhe0417/?igsh=MWQzODBvNXljajVqdw%3D%3D" target="_blank">Instagram</a>
+                <a href="https://discord.com/invite/TAtjJKjf" target="_blank">Discord</a>
+            </div>
+        </footer>
+
+    <!-- 主题切换按钮 -->
+    <button class="theme-switch" onclick="toggleTheme()">切换主题</button>
+
+    <script src="script.js"></script>
+
 </body>
 </html>
