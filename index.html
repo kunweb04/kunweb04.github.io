@@ -4,348 +4,128 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kun's Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Noto+Serif+SC&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <style>
+    html { scroll-behavior: smooth; }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
+    html { scrollbar-width: thin; scrollbar-color: var(--primary) var(--bg); }
     :root {
       --primary: #64ffda;
       --secondary: #8b5cf6;
+      --gold: #ffe0a6;
       --bg: #0f172a;
       --text: #e2e8f0;
       --gray: #94a3b8;
       --transition-speed: 0.4s;
       --card-bg: rgba(255, 255, 255, 0.03);
-      --hover-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      --hover-shadow: 0 20px 40px rgba(0,0,0,0.4);
     }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
-    }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-      scroll-behavior: smooth;
-    }
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 1rem 2rem;
-      background: rgba(10,10,20,0.95);
-      backdrop-filter: blur(10px);
-      z-index: 1000;
-      display: flex;
-      justify-content: center;
-    }
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-    }
-    .nav-links a {
-      color: var(--text);
-      text-decoration: none;
-      padding: 0.5rem;
-      position: relative;
-      transition: var(--transition-speed);
-    }
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 2px;
-      background: var(--primary);
-      transition: var(--transition-speed);
-    }
-    .nav-links a:hover::after,
-    .nav-links a.active::after {
-      width: 100%;
-    }
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background: linear-gradient(135deg, var(--bg) 50%, rgba(139,92,246,0.08));
-      padding: 2rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    #particles-js {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-    }
-
-    .hero h1, .hero p {
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero h1 {
-      font-size: 4rem;
-      margin-bottom: 1rem;
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero p {
-      font-size: 1.2rem;
-    }
-    #about {
-      padding: 8rem 2rem;
-      background: #111122;
-    }
-    #about .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      align-items: center;
-    }
-    #about .profile {
-      flex: 1 1 300px;
-    }
-    #about .profile h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: var(--primary);
-    }
-    #about .profile p {
-      line-height: 1.6;
-      margin-bottom: 1rem;
-    }
-    #about .details {
-      flex: 1 1 300px;
-      background: rgba(0,0,0,0.3);
-      padding: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    }
-    #about .details ul {
-      list-style: none;
-    }
-    #about .details ul li {
-      padding: 0.5rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-    #skills {
-      padding: 8rem 2rem;
-      background: var(--bg);
-    }
-    #skills h2 {
-      text-align: center;
-      margin-bottom: 2rem;
-      color: var(--primary);
-      font-size: 2.5rem;
-    }
-    .skills-container {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-    }
-    .skill-item {
-      width: 150px;
-      text-align: center;
-    }
-    .circular-progress {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: conic-gradient(var(--primary) var(--progress), #2a2a35 0deg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1rem;
-      position: relative;
-    }
-    .circular-progress::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 90px;
-      height: 90px;
-      background: var(--bg);
-      border-radius: 50%;
-    }
-    .circular-progress span {
-      position: relative;
-      font-size: 1.2rem;
-      color: var(--primary);
-      font-weight: bold;
-    }
-    .skill-item h3 {
-      margin-top: 0.5rem;
-    }
-    #projects {
-      padding: 8rem 2rem;
-      background: linear-gradient(135deg, #111122 0%, #0a0a14 100%);
-    }
-    #projects h2 {
-      text-align: center;
-      margin-bottom: 3rem;
-      color: var(--primary);
-      font-size: 2.5rem;
-    }
-    .projects-grid {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 2.5rem;
-      padding: 0.5rem;
-    }
-    .project-card {
-      position: relative;
-      background: rgba(255, 255, 255, 0.03);
-      border-radius: 20px;
-      padding: 2rem;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      overflow: hidden;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
-    }
-    .project-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-      border-color: var(--primary);
-    }
-    .project-image {
-      width: 100%;
-      height: 200px;
-      border-radius: 12px;
-      overflow: hidden;
-      margin-bottom: 1.5rem;
-      position: relative;
-    }
-    .project-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s ease;
-    }
-    .project-card:hover .project-image img {
-      transform: scale(1.1);
-    }
-    .project-content {
-      position: relative;
-      z-index: 1;
-    }
-    .project-content h3 {
-      color: var(--primary);
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      position: relative;
-      display: inline-block;
-    }
-    .project-content h3::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -5px;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(to right, var(--primary), transparent);
-    }
-    .project-content p {
-      color: var(--gray);
-      margin-bottom: 1.5rem;
-      line-height: 1.6;
-    }
-    .project-links {
-      display: flex;
-      gap: 1rem;
-    }
-    .project-links a {
-      padding: 0.8rem 1.5rem;
-      border: 1px solid var(--primary);
-      border-radius: 8px;
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .project-links a::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 0;
-      height: 100%;
-      background: var(--primary);
-      transition: width 0.3s ease;
-      z-index: -1;
-    }
-    .project-links a:hover {
-      color: var(--bg);
-    }
-    .project-links a:hover::before {
-      width: 100%;
-    }
-    @media (max-width: 768px) {
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
-      .project-card {
-        padding: 1.5rem;
-      }
-    }
-    .project-links a:hover {
-      color: var(--bg);
-    }
-    .project-links a:hover::before {
-      transform: translateX(100%);
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: var(--bg);
-      color: #aaa;
-      font-size: 0.9rem;
-    }
-    @media (max-width: 768px) {
-      #about .container {
-        flex-direction: column;
-      }
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+    body { background: var(--bg); color: var(--text); overflow-x: hidden; }
+    nav { position: fixed; top: 0; left: 0; width: 100%; padding: 1rem 2rem; background: rgba(10,10,20,0.95); backdrop-filter: blur(10px); z-index: 1000; display: flex; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a { color: var(--text); text-decoration: none; padding: 0.5rem; position: relative; transition: var(--transition-speed); }
+    .nav-links a::after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 2px; background: var(--primary); transition: var(--transition-speed); }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+    .nav-links a:hover { text-shadow: 0 0 5px var(--primary); }
+    .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: linear-gradient(135deg, var(--bg) 50%, rgba(139,92,246,0.08)); padding: 2rem; position: relative; overflow: hidden; background-attachment: fixed; }
+    #particles-js { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+    .hero h1, .hero p { position: relative; z-index: 2; }
+    .hero h1 { font-size: 4rem; margin-bottom: 1rem; background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { font-size: 1.2rem; }
+    .cta-container { position: relative; z-index: 2; margin-top: 1.5rem; }
+    .cta-button { display: inline-block; padding: 0.8rem 1.5rem; border: 1px solid var(--primary); border-radius: 8px; color: var(--primary); text-decoration: none; font-weight: 500; transition: all 0.3s ease; cursor: pointer; }
+    .cta-button:hover { background: var(--primary); color: var(--bg); transform: scale(1.05); }
+    #about { padding: 8rem 2rem; background: #111122; background-attachment: fixed; }
+    #about .container { max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; }
+    #about .profile { flex: 1 1 300px; }
+    #about .profile h2 { font-size: 2.5rem; margin-bottom: 1rem; color: var(--primary); }
+    #about .profile p { line-height: 1.6; margin-bottom: 1rem; }
+    #about .details { flex: 1 1 300px; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+    #about .details ul { list-style: none; }
+    #about .details ul li { padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    #skills { padding: 8rem 2rem; background: var(--bg); background-attachment: fixed; }
+    #skills h2 { text-align: center; margin-bottom: 2rem; color: var(--primary); font-size: 2.5rem; }
+    .skills-container { max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; }
+    .skill-item { width: 150px; text-align: center; }
+    .circular-progress { width: 120px; height: 120px; border-radius: 50%; background: conic-gradient(var(--primary) var(--progress), #2a2a35 0deg); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; position: relative; }
+    .circular-progress::before { content: ""; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90px; height: 90px; background: var(--bg); border-radius: 50%; }
+    .circular-progress span { position: relative; font-size: 1.2rem; color: var(--primary); font-weight: bold; }
+    .skill-item h3 { margin-top: 0.5rem; }
+    #projects { padding: 8rem 2rem; background: linear-gradient(135deg, #111122 0%, #0a0a14 100%); background-attachment: fixed; }
+    #projects h2 { text-align: center; margin-bottom: 3rem; color: var(--primary); font-size: 2.5rem; }
+    #projects h3 { margin: 2rem 0 1rem; text-align: center; color: var(--primary); font-size: 1.8rem; }
+    .projects-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2.5rem; padding: 0.5rem; }
+    .project-card { position: relative; background: var(--card-bg); border-radius: 20px; padding: 2rem; transition: all 0.4s cubic-bezier(0.175,0.885,0.32,1.275); border: 1px solid rgba(255,255,255,0.05); overflow: hidden; backdrop-filter: blur(10px); box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); }
+    .project-card:hover { transform: translateY(-10px); box-shadow: var(--hover-shadow); border-color: var(--primary); }
+    .project-image { width: 100%; height: 200px; border-radius: 12px; overflow: hidden; margin-bottom: 1.5rem; position: relative; }
+    .project-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .project-card:hover .project-image img { transform: scale(1.1); }
+    .project-content { position: relative; z-index: 1; }
+    .project-content h3 { color: var(--primary); font-size: 1.5rem; margin-bottom: 1rem; position: relative; display: inline-block; }
+    .project-content h3::after { content: ""; position: absolute; left: 0; bottom: -5px; width: 100%; height: 2px; background: linear-gradient(to right, var(--primary), transparent); }
+    .project-content p { color: var(--gray); margin-bottom: 1.5rem; line-height: 1.6; }
+    .project-links { display: flex; gap: 1rem; }
+    .project-links a { padding: 0.8rem 1.5rem; border: 1px solid var(--primary); border-radius: 8px; color: var(--primary); text-decoration: none; font-weight: 500; transition: all 0.3s ease; position: relative; overflow: hidden; }
+    .project-links a::before { content: ""; position: absolute; top: 0; left: 0; width: 0; height: 100%; background: var(--primary); transition: width 0.3s ease; z-index: -1; }
+    .project-links a:hover { color: var(--bg); }
+    .project-links a:hover::before { width: 100%; transform: translateX(100%); }
+    .poetry-grid { max-width: 1200px; margin: 2rem auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2.5rem; padding: 1rem; }
+    .poetry-card { background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)); padding: 2.5rem 2rem; border-radius: 15px; box-shadow: 0 6px 24px rgba(0,0,0,0.4); transition: transform 0.3s ease, box-shadow 0.3s ease; backdrop-filter: blur(4px); font-family: 'Noto Serif SC', serif; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+    .poetry-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+    .poetry-card h3 { color: var(--gold); margin-bottom: 1rem; font-size: 1.9rem; }
+    .poetry-card p { color: var(--text); line-height: 1.9; white-space: pre-wrap; font-size: 1.15rem; }
+    #blog { padding: 8rem 2rem; background: linear-gradient(135deg, #1e293b, #2d3748); text-align: center; }
+    #blog h2 { margin-bottom: 1rem; color: var(--primary); font-size: 2.5rem; }
+    .blog-container { max-width: 800px; margin: 0 auto; }
+    .blog-container p { margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--text); }
+    .blog-container a { display: inline-block; padding: 0.8rem 1.5rem; border: 1px solid var(--primary); border-radius: 8px; color: var(--primary); text-decoration: none; font-weight: 500; transition: all 0.3s ease; }
+    .blog-container a:hover { background: var(--primary); color: var(--bg); }
+    #contact { padding: 8rem 2rem; background: #111122; }
+    #contact h2 { text-align: center; margin-bottom: 2rem; color: var(--primary); font-size: 2.5rem; }
+    .contact-wrapper { max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem; align-items: center; }
+    .form-container, .contact-info { width: 500px; }
+    .form { width: 100%; padding: 2rem 3rem; display: grid; gap: 1.5rem; border: 1px solid transparent; border-image: linear-gradient(45deg, var(--gold), transparent, var(--gold)) 1; background: linear-gradient(to bottom, #424242, #212121); border-radius: 0.5rem; position: relative; }
+    .form::before, .form::after { content: ""; position: absolute; border: inherit; z-index: -1; }
+    .form::before { inset: -1rem; opacity: 0.15; }
+    .form::after { inset: -2rem; opacity: 0.05; }
+    .form .title { color: #fff; font-size: 2rem; font-weight: 700; letter-spacing: 0.3rem; text-transform: uppercase; background: linear-gradient(var(--gold), #d4af37); -webkit-background-clip: text; background-clip: text; color: transparent; text-align: center; }
+    .form .input-container { width: 100%; display: flex; align-items: center; background: radial-gradient(circle, rgba(255,255,255,0.1), transparent); border: none; border-bottom: 2px solid var(--gold); }
+    .form .input-container .input { width: 100%; padding: 0.8rem 1rem; background: none; border: none; color: #fff; font-size: 1rem; }
+    .form .input-container:focus-within { border-bottom-color: var(--primary); }
+    .form .btn { width: 100%; padding: 0.8rem; background: linear-gradient(45deg, var(--gold), #d4af37); border: none; border-radius: 0.5rem; font-size: 1.2rem; transition: all 0.4s ease, transform 0.3s ease; cursor: pointer; box-shadow: 0 0 10px var(--gold), 0 0 10px var(--gold); }
+    .form .btn:hover { background: #d4af37; box-shadow: none; transform: scale(1.05); }
+    .contact-info { padding: 2rem; border: 1px solid transparent; border-image: linear-gradient(45deg, var(--gold), transparent, var(--gold)) 1; background: linear-gradient(to bottom, #424242, #212121); border-radius: 0.5rem; display: flex; flex-direction: column; align-items: center; }
+    .contact-info h3 { color: #fff; margin-bottom: 1.5rem; font-size: 1.8rem; }
+    .contact-info .social-links { display: flex; gap: 1.5rem; }
+    .contact-info .social-links a { font-size: 2rem; color: var(--gold); transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease; }
+    .contact-info .social-links a:hover { color: var(--gold); text-shadow: 0 0 8px var(--gold); transform: scale(1.05); }
+    @media (max-width: 768px) { #about .container { flex-direction: column; } .projects-grid, .poetry-grid { grid-template-columns: 1fr; } .project-card, .poetry-card { padding: 1.5rem; } .contact-wrapper { max-width: 90%; } .form-container, .contact-info { width: 100%; } }
+    footer { text-align: center; padding: 2rem; background: var(--bg); color: #aaa; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.1); }
   </style>
 </head>
 <body>
-  <div class="scroll-progress"></div>
-  
   <nav>
     <div class="nav-links">
       <a href="#about">关于</a>
       <a href="#skills">技能</a>
       <a href="#projects">作品</a>
+      <a href="#blog">博客</a>
+      <a href="#contact">联系我</a>
     </div>
   </nav>
-
   <section class="hero">
     <div id="particles-js"></div>
     <h1>Kun Website</h1>
     <p>一个简单的自我简介网站</p>
+    <div class="cta-container">
+      <a href="#about" class="cta-button">了解更多</a>
+    </div>
   </section>
-
   <section id="about">
     <div class="container">
       <div class="profile">
@@ -362,7 +142,6 @@
       </div>
     </div>
   </section>
-
   <section id="skills">
     <h2>技术能力</h2>
     <div class="skills-container">
@@ -395,25 +174,13 @@
           <span>60%</span>
         </div>
         <h3>AI应用</h3>
-        </div>
+      </div>
     </div>
   </section>
-
   <section id="projects">
     <h2>作品展示</h2>
+    <h3>网页作品</h3>
     <div class="projects-grid">
-      <div class="project-card">
-        <div class="project-image">
-          <img src="project1.jpg" alt="个人宇宙">
-        </div>
-        <div class="project-content">
-          <h3>个人宇宙</h3>
-          <p>Astro 框架打造的博客，具有速加载、SEO友好等特点。持续更新中的分享平台。</p>
-          <div class="project-links">
-            <a href="https://oho1417.com/x1" class="demo">预览</a>
-          </div>
-        </div>
-      </div>
       <div class="project-card">
         <div class="project-image">
           <img src="project2.jpg" alt="太空幻境">
@@ -432,7 +199,7 @@
         </div>
         <div class="project-content">
           <h3>初代简介</h3>
-          <p>首次使用html,css,js自己编写的网页，包含了一部分的个人信息。</p>
+          <p>首次使用 html, css, js 自己编写的网页，包含了一部分的个人信息。</p>
           <div class="project-links">
             <a href="https://kunweb04.github.io/introduce/index.html" class="demo">预览</a>
           </div>
@@ -470,7 +237,7 @@
         </div>
         <div class="project-content">
           <h3>晶化学科普</h3>
-          <p>联合化学领域专家协作完成的网站，旨在科普晶体知识，让大家了解晶体学</p>
+          <p>联合化学领域专家协作完成的网站，旨在科普晶体知识，让大家了解晶体学。</p>
           <div class="project-links">
             <a href="https://kunweb04.github.io/workcrystal/" class="demo">预览</a>
           </div>
@@ -489,78 +256,87 @@
         </div>
       </div>
     </div>
+    <h3>诗词作品</h3>
+    <div class="poetry-grid">
+      <div class="poetry-card">
+        <h3>《疯》</h3>
+        <p>
+昨夜星辰昨夜风，考完公民心已空。<br>
+分数飘渺风中逝，数日忙碌梦成空。<br>
+题难如山逼吾疯，感谢恩师翁汶峰。<br>
+一眼题目一眼疯，一眼望去心已疯.
+        </p>
+      </div>
+      <div class="poetry-card">
+        <h3>《别友亭望》</h3>
+        <p>
+长亭草色映斜晖，别泪难收未肯归。<br>
+千里路遥音信杳，凭栏空叹旧人稀.
+        </p>
+      </div>
+    </div>
   </section>
+  <section id="blog">
+    <h2>博客</h2>
+    <div class="blog-container">
+      <p>欢迎来到我的博客！在这里我将分享最新的技术文章、心得体会和生活点滴.</p>
+      <a href="https://oho1417.com/x1/" target="_blank">立即访问博客</a>
+    </div>
+  </section>
+  <section id="contact">
+    <h2>联系我</h2>
+    <div class="contact-wrapper">
+      <div class="form-container">
+        <form class="form" action="#" method="post">
+          <span class="title">发送留言</span>
+          <div class="input-container">
+            <input class="input" type="text" name="name" placeholder="姓名">
+          </div>
+          <div class="input-container">
+            <input class="input" type="email" name="email" placeholder="电子邮件">
+          </div>
+          <div class="input-container">
+            <textarea class="input" name="message" placeholder="留言" rows="4"></textarea>
+          </div>
+          <button class="btn" type="submit">发送</button>
+        </form>
+      </div>
+      <div class="contact-info">
+        <h3>其他联系方式</h3>
+        <div class="social-links">
+          <a href="https://www.instagram.com/kunzhe0417?igsh=MWQzODBvNXljajVqdw==" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://discord.gg/hEx2apUy" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
+          <a href="https://qm.qq.com/q/egke9PPsUE" target="_blank" title="QQ"><i class="fab fa-qq"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>&copy; 2025 Kun's Portfolio</footer>
   <script>
-      particlesJS('particles-js', {
-        particles: {
-          number: {
-            value: 100,
-            density: {
-              enable: true,
-              value_area: 800
-            }
-          },
-          color: {
-            value: '#64ffda'
-          },
-          shape: {
-            type: 'circle'
-          },
-          opacity: {
-            value: 0.5,
-            random: true
-          },
-          size: {
-            value: 3,
-            random: true
-          },
-          line_linked: {
-            enable: true,
-            distance: 150,
-            color: '#64ffda',
-            opacity: 0.2,
-            width: 1
-          },
-          move: {
-            enable: true,
-            speed: 2,
-            direction: 'none',
-            random: true,
-            straight: false,
-            out_mode: 'out',
-            bounce: false
-          }
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 100, density: { enable: true, value_area: 800 } },
+        color: { value: '#64ffda' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.5, random: true },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: '#64ffda', opacity: 0.2, width: 1 },
+        move: { enable: true, speed: 2, direction: 'none', random: true, straight: false, out_mode: 'out', bounce: false }
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: {
+          onhover: { enable: true, mode: 'grab' },
+          onclick: { enable: true, mode: 'push' },
+          resize: true
         },
-        interactivity: {
-          detect_on: 'canvas',
-          events: {
-            onhover: {
-              enable: true,
-              mode: 'grab'
-            },
-            onclick: {
-              enable: true,
-              mode: 'push'
-            },
-            resize: true
-          },
-          modes: {
-            grab: {
-              distance: 140,
-              line_linked: {
-                opacity: 0.5
-              }
-            },
-            push: {
-              particles_nb: 4
-            }
-          }
-        },
-        retina_detect: true
-      });
-    </script>
-  <footer>
-    &copy; 2025 Kun's Portfolio
-  </footer>
+        modes: {
+          grab: { distance: 140, line_linked: { opacity: 0.5 } },
+          push: { particles_nb: 4 }
+        }
+      },
+      retina_detect: true
+    });
+  </script>
 </body>
 </html>
